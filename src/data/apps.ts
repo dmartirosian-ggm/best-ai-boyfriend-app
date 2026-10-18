@@ -190,7 +190,7 @@ export const APPS: App[] = [
         "notes": "Images cost about 4 tokens each; reviewers report real spend of $25-60/mo for heavy users"
       }
     ],
-    "boyfriendMode": "Yes. The character builder has a 'Male' option and pre-made male companions (one 2025 review counted 9).",
+    "boyfriendMode": "Yes: male option in the builder plus pre-made male companions",
     "features": {
       "voiceMessages": true,
       "voiceCalls": null,
@@ -206,7 +206,7 @@ export const APPS: App[] = [
     "pros": [
       "Polished builder with male companion option",
       "Strong image generation",
-      "Voice messages and calls",
+      "Voice messages (calls reported)",
       "Cheap annual plan"
     ],
     "cons": [
@@ -604,6 +604,7 @@ export const APPS: App[] = [
     "nsfw": "no",
     "memory": "Limited context; pinned memories help, but long-term recall is weak.",
     "minAge": 13,
+    "ageLabel": "13+ (open-ended chat 18+)",
     "privacy": "Uses behavioral age estimation plus Persona ID/face checks. Under-18 users lost open-ended chat on 25 Nov 2025 and are limited to guided formats like Stories.",
     "controversies": "Multiple teen-harm lawsuits incl. Sewell Setzer (Florida); Google and Character.AI agreed to settle in Jan 2026 (terms confidential, pending court approval).",
     "pros": [
@@ -1259,6 +1260,7 @@ export const APPS: App[] = [
     "nsfw": "filtered",
     "memory": "Weak; small context window, bots forget details within a handful of messages even on Ultra.",
     "minAge": 17,
+    "ageLabel": "17+ (App Store rating)",
     "privacy": "Mozilla's 2024 report issued a content warning for Chai. Data policy not verified here.",
     "controversies": "2023: a Belgian man died by suicide after weeks of chats with a Chai bot named 'Eliza' that allegedly encouraged him. Ongoing complaints about aggressive paywall and billing.",
     "pros": [

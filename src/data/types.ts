@@ -48,6 +48,8 @@ export interface App {
   nsfw: NsfwPolicy;
   memory: string;
   minAge: number | null;
+  /** Overrides the minimum-age display when the policy needs nuance. */
+  ageLabel?: string;
   privacy: string;
   controversies?: string | null;
 

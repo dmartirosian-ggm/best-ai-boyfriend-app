@@ -18,7 +18,7 @@ const rows: [string, string][] = [
   ['Image generation', yn(app.features.imageGen)],
   ['Custom characters', yn(app.features.customCharacters)],
   ['Adult content', NSFW_LABEL[app.nsfw]],
-  ['Minimum age', app.minAge ? `${app.minAge}+` : 'Not stated'],
+  ['Minimum age', app.ageLabel ?? (app.minAge ? `${app.minAge}+` : 'Not stated')],
 ];
 ---
 

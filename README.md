@@ -28,7 +28,8 @@ npm run check:content   # fast lint of all articles (frontmatter, MDX, app slugs
 2. **Affiliate links:** paste tracking URLs into `affiliateUrl` in `src/data/apps.ts`. Until then `/go/{slug}/` redirects to the app's homepage. Programs (from the keyword plan): Candy AI, OurDream AI, Nomi AI, CrushOn AI, Kupid AI, DreamGF/DreamBF.
 3. **Verify facts.** Prices in `apps.ts` were researched from third-party sources on 2026-10-18 (official sites couldn't be reached), several at low confidence — see `notes` in `apps.research.json`. Check each app's checkout page, then bump `verified`.
 4. **Add first-hand material.** The copy is written in the site's editorial voice; add your own screenshots, test notes and personal details to reviews to strengthen E-E-A-T, and personalize `/about/`.
-5. **Hosting:** any static host (Netlify, Vercel, Cloudflare Pages). If your host supports redirects, consider replacing the meta-refresh `/go/` pages with real 302s.
+5. **Contact details:** the privacy policy and about page say "contact us" but no email is set yet. Add one (privacy rights requests need it).
+6. **Hosting:** any static host (Netlify, Vercel, Cloudflare Pages). If your host supports redirects, consider replacing the meta-refresh `/go/` pages with real 302s.
 
 ## Adding a page
 

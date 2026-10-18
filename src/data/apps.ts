@@ -193,7 +193,7 @@ export const APPS: App[] = [
     "boyfriendMode": "Yes. The character builder has a 'Male' option and pre-made male companions (one 2025 review counted 9).",
     "features": {
       "voiceMessages": true,
-      "voiceCalls": true,
+      "voiceCalls": null,
       "imageGen": true,
       "customCharacters": true,
       "groupChat": null

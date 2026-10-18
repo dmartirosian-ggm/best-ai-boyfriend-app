@@ -1,0 +1,29 @@
+---
+/** Pricing plans for one app, from src/data/apps.ts. <PlanTable app="candy-ai" /> */
+import { getApp } from '~/lib/apps';
+const app = getApp(Astro.props.app);
+interface Props { app: string }
+---
+
+<div class="tw">
+  <table>
+    <thead>
+      <tr><th scope="col">Plan</th><th scope="col">Monthly</th><th scope="col">Annual</th><th scope="col">Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Free</th><td>$0</td><td>—</td><td>{app.freeTier}</td></tr>
+      {app.plans.map((p) => (
+        <tr><th scope="row">{p.name}</th><td>{p.monthly ?? '—'}</td><td>{p.annual ?? '—'}</td><td>{p.notes ?? ''}</td></tr>
+      ))}
+    </tbody>
+  </table>
+  <p class="note">Prices in USD, checked {new Date(app.verified).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}. Apps change pricing often — confirm on the checkout page.</p>
+</div>
+
+<style>
+  .tw { margin: 1.6em 0; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; min-width: 520px; }
+  th, td { padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); background: var(--paper-2); }
+  .note { margin: 0; padding: 10px 14px; font-size: 0.8rem; color: var(--muted); }
+</style>

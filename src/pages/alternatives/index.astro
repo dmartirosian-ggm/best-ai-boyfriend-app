@@ -1,0 +1,13 @@
+---
+import Hub from '~/components/Hub.astro';
+import { getArticles } from '~/lib/articles';
+const entries = (await getArticles()).filter((a) => a.data.type === 'alternatives');
+---
+
+<Hub
+  title="Best Alternatives to Popular AI Chat Apps"
+  h1="Alternatives to popular AI chat apps"
+  description="Looking to switch? The best alternatives to Character AI, Janitor AI, Candy AI, Replika and more — for an AI boyfriend."
+  intro="Hit a filter, a paywall or a memory wall? These guides show the best apps to switch to, ranked for people who want an AI boyfriend."
+  entries={entries}
+/>

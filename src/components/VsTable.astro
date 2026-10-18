@@ -1,0 +1,65 @@
+---
+/** Side-by-side spec table. <VsTable a="candy-ai" b="ourdream-ai" /> */
+import { getApp, PLATFORM_LABEL, NSFW_LABEL } from '~/lib/apps';
+import AppMark from './AppMark.astro';
+import Score from './Score.astro';
+import CTA from './CTA.astro';
+interface Props { a: string; b: string }
+const A = getApp(Astro.props.a);
+const B = getApp(Astro.props.b);
+const yn = (v: boolean | null) => (v === null ? '—' : v ? '✓ Yes' : '✗ No');
+const rows: [string, (x: typeof A) => string][] = [
+  ['Best for', (x) => x.bestFor],
+  ['Starting price', (x) => x.startingPrice],
+  ['Free plan', (x) => x.freeShort],
+  ['Platforms', (x) => x.platforms.map((p) => PLATFORM_LABEL[p]).join(', ')],
+  ['Boyfriend mode', (x) => x.boyfriendMode],
+  ['Memory', (x) => x.memory],
+  ['Voice messages', (x) => yn(x.features.voiceMessages)],
+  ['Voice calls', (x) => yn(x.features.voiceCalls)],
+  ['Image generation', (x) => yn(x.features.imageGen)],
+  ['Custom characters', (x) => yn(x.features.customCharacters)],
+  ['Group chat', (x) => yn(x.features.groupChat)],
+  ['Adult content', (x) => NSFW_LABEL[x.nsfw]],
+];
+---
+
+<div class="tw">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden">Feature</span></th>
+        {[A, B].map((x) => (
+          <th scope="col">
+            <div class="h"><AppMark app={x} size={40} /><span>{x.name}</span><Score score={x.score} /></div>
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map(([label, f]) => (
+        <tr>
+          <th scope="row">{label}</th>
+          <td>{f(A)}</td>
+          <td>{f(B)}</td>
+        </tr>
+      ))}
+      <tr>
+        <th scope="row"><span class="visually-hidden">Link</span></th>
+        <td><CTA app={A.slug} size="sm" /></td>
+        <td><CTA app={B.slug} size="sm" /></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .tw { margin: 1.6em 0; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; min-width: 560px; table-layout: fixed; }
+  th, td { padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { background: var(--paper-2); }
+  thead th:first-child, tbody th { width: 26%; }
+  tbody th { color: var(--muted); font-weight: 600; font-size: 0.85rem; }
+  .h { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--font-display); font-size: 1.1rem; }
+  tbody tr:last-child > * { border-bottom: 0; }
+</style>

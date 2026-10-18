@@ -1,0 +1,13 @@
+---
+import Hub from '~/components/Hub.astro';
+import { getArticles } from '~/lib/articles';
+const entries = (await getArticles()).filter((a) => a.data.type === 'vs');
+---
+
+<Hub
+  title="AI Companion App Comparisons"
+  h1="Head-to-head comparisons"
+  description="Side-by-side comparisons of popular AI boyfriend and companion apps, with a clear winner for each use case."
+  intro="Torn between two apps? We put them side by side on price, memory, voice, images and privacy, then tell you which to pick."
+  entries={entries}
+/>

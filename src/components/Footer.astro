@@ -1,0 +1,92 @@
+---
+import { SITE } from '~/config';
+const year = new Date().getFullYear();
+const cols = [
+  {
+    title: 'Best of',
+    links: [
+      ['/', 'Best AI boyfriend apps'],
+      ['/free/', 'Free AI boyfriend apps'],
+      ['/reddit-picks/', 'What Reddit recommends'],
+      ['/ai-boyfriend-voice-call/', 'Apps with voice calls'],
+      ['/gay-ai-boyfriend/', 'Gay AI boyfriend apps'],
+      ['/best-ai-companion-apps/', 'Best AI companion apps'],
+    ],
+  },
+  {
+    title: 'Top reviews',
+    links: [
+      ['/reviews/candy-ai/', 'Candy AI review'],
+      ['/reviews/nomi-ai/', 'Nomi AI review'],
+      ['/reviews/ourdream-ai/', 'OurDream AI review'],
+      ['/reviews/kindroid/', 'Kindroid review'],
+      ['/reviews/replika/', 'Replika review'],
+      ['/reviews/', 'All reviews →'],
+    ],
+  },
+  {
+    title: 'Compare',
+    links: [
+      ['/vs/candy-ai-vs-ourdream-ai/', 'Candy AI vs OurDream AI'],
+      ['/vs/kindroid-vs-nomi/', 'Kindroid vs Nomi'],
+      ['/candy-ai-alternatives/', 'Candy AI alternatives'],
+      ['/character-ai-alternatives/', 'Character AI alternatives'],
+      ['/alternatives/', 'All alternatives →'],
+    ],
+  },
+  {
+    title: 'Site',
+    links: [
+      ['/about/', 'About us'],
+      ['/how-we-test/', 'How we test'],
+      ['/affiliate-disclosure/', 'Affiliate disclosure'],
+      ['/privacy/', 'Privacy policy'],
+      ['/faq/', 'FAQ'],
+      ['/guides/', 'All guides'],
+    ],
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="grid">
+      {
+        cols.map((c) => (
+          <div>
+            <p class="h">{c.title}</p>
+            <ul>
+              {c.links.map(([href, label]) => (
+                <li>
+                  <a href={href}>{label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+    <div class="legal">
+      <p>
+        <strong>18+ only.</strong> Some apps reviewed here allow adult content. AI companions are not a substitute
+        for professional mental-health support. If you're struggling, contact a local crisis line (in the US, call or text
+        988).
+      </p>
+      <p>{SITE.disclosure}</p>
+      <p>© {year} {SITE.name}. Independent and not affiliated with any app reviewed. Product names are trademarks of their owners.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { margin-top: 80px; border-top: 1px solid var(--line); background: var(--paper-2); padding: 48px 0 32px; font-size: 0.92rem; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .h { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; margin: 0 0 8px; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin: 6px 0; }
+  a { color: var(--ink-2); text-decoration: none; }
+  a:hover { color: var(--accent); text-decoration: underline; }
+  .legal { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }
+  .legal p { margin: 0.5em 0; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+</style>

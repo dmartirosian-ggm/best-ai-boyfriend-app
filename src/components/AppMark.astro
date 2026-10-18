@@ -1,0 +1,22 @@
+---
+/** Monogram tile standing in for an app logo (no third-party logos shipped). */
+import type { App } from '~/data/types';
+interface Props { app: App; size?: number }
+const { app, size = 48 } = Astro.props;
+const letters = app.name.replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+// Stable hue per app so tiles are distinguishable.
+let h = 0;
+for (const ch of app.slug) h = (h * 31 + ch.charCodeAt(0)) % 360;
+---
+
+<span class="mark" style={`--h:${h};--s:${size}px`} aria-hidden="true">{letters}</span>
+
+<style>
+  .mark {
+    flex: none; display: inline-grid; place-items: center;
+    width: var(--s); height: var(--s); border-radius: calc(var(--s) * 0.28);
+    background: linear-gradient(135deg, hsl(var(--h) 70% 58%), hsl(calc(var(--h) + 40) 65% 42%));
+    color: #fff; font-family: var(--font-display); font-weight: 700; font-size: calc(var(--s) * 0.38);
+    letter-spacing: -0.02em;
+  }
+</style>

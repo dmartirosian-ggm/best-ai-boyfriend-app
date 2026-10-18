@@ -1,0 +1,13 @@
+---
+import Hub from '~/components/Hub.astro';
+import { getArticles } from '~/lib/articles';
+const entries = (await getArticles()).filter((a) => a.data.type === 'listicle' || a.data.type === 'guide');
+---
+
+<Hub
+  title="AI Boyfriend Guides"
+  h1="Guides & best-of lists"
+  description="Best-of lists and how-to guides for AI boyfriends: free apps, voice calls, gay and anime boyfriends, ChatGPT, and more."
+  intro="Ranked lists for specific needs, plus practical how-tos for getting the most out of an AI boyfriend."
+  entries={entries}
+/>

@@ -1,0 +1,32 @@
+---
+import { marked } from 'marked';
+interface Props { faqs: { q: string; a: string }[]; title?: string }
+const { faqs, title = 'Frequently asked questions' } = Astro.props;
+---
+
+{
+  faqs.length > 0 && (
+    <section class="faq" id="faq">
+      <h2>{title}</h2>
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <div class="a" set:html={marked.parse(f.a, { async: false })} />
+        </details>
+      ))}
+    </section>
+  )
+}
+
+<style>
+  details { border-bottom: 1px solid var(--line); }
+  summary {
+    cursor: pointer; list-style: none; padding: 16px 36px 16px 0; position: relative;
+    font-weight: 700; font-size: 1.05rem; color: var(--ink);
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; position: absolute; right: 6px; top: 12px; font-size: 1.5rem; color: var(--accent); font-weight: 400; }
+  details[open] summary::after { content: '–'; }
+  .a { padding: 0 0 16px; color: var(--ink-2); }
+  .a :global(p) { margin: 0 0 0.6em; }
+</style>

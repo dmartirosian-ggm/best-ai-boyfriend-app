@@ -1,0 +1,28 @@
+---
+/**
+ * Affiliate redirect: /go/{slug}/ -> app.affiliateUrl (falls back to the app's website).
+ * Static meta-refresh so it works on any host. If your host supports redirects
+ * (Netlify _redirects, Vercel, Cloudflare), prefer real 302s there.
+ */
+import { APPS } from '~/data/apps';
+export function getStaticPaths() {
+  return APPS.filter((a) => a.hasAffiliate).map((app) => ({ params: { slug: app.slug }, props: { app } }));
+}
+const { app } = Astro.props;
+const target = app.affiliateUrl ?? app.website;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <title>Redirecting to {app.name}…</title>
+    <link rel="canonical" href={target} />
+    <script is:inline define:vars={{ target }}>location.replace(target);</script>
+  </head>
+  <body>
+    <p>Taking you to <a href={target} rel="sponsored nofollow">{app.name}</a>…</p>
+  </body>
+</html>

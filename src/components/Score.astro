@@ -1,0 +1,16 @@
+---
+interface Props { score: number; size?: 'sm' | 'lg' }
+const { score, size = 'sm' } = Astro.props;
+---
+
+<span class={`score score--${size}`} aria-label={`Rated ${score} out of 10`}>
+  <b>{score.toFixed(1)}</b><span>/10</span>
+</span>
+
+<style>
+  .score { display: inline-flex; align-items: baseline; gap: 1px; font-family: var(--font-display); color: var(--ink); white-space: nowrap; }
+  .score b { font-weight: 700; color: var(--accent); }
+  .score span { font-size: 0.75em; color: var(--muted); }
+  .score--sm b { font-size: 1.15rem; }
+  .score--lg b { font-size: 2.4rem; line-height: 1; }
+</style>

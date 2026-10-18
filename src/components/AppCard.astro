@@ -1,0 +1,74 @@
+---
+/**
+ * Ranked listicle entry.
+ * <AppCard app="candy-ai" rank={1} award="Best overall">Page-specific write-up in markdown…</AppCard>
+ */
+import { getApp, reviewHref, PLATFORM_LABEL } from '~/lib/apps';
+import AppMark from './AppMark.astro';
+import Score from './Score.astro';
+import ProsCons from './ProsCons.astro';
+import CTA from './CTA.astro';
+
+interface Props { app: string; rank?: number; award?: string; pros?: string[]; cons?: string[]; cta?: string }
+const { app: slug, rank, award, pros, cons, cta } = Astro.props;
+const app = getApp(slug);
+const review = reviewHref(app);
+---
+
+<section class="card" id={app.slug}>
+  <header>
+    {rank !== undefined && <span class="rank">#{rank}</span>}
+    <AppMark app={app} size={56} />
+    <div class="ttl">
+      {award && <p class="eyebrow">{award}</p>}
+      <h3>{app.name}</h3>
+      <p class="tag">{app.tagline}</p>
+    </div>
+    <Score score={app.score} />
+  </header>
+
+  <dl class="facts">
+    <div><dt>Price</dt><dd>{app.startingPrice}</dd></div>
+    <div><dt>Free plan</dt><dd>{app.freeShort}</dd></div>
+    <div><dt>Platforms</dt><dd>{app.platforms.map((p) => PLATFORM_LABEL[p]).join(', ')}</dd></div>
+    <div><dt>Best for</dt><dd>{app.bestFor}</dd></div>
+  </dl>
+
+  <div class="body prose"><slot /></div>
+
+  <ProsCons pros={pros ?? app.pros.slice(0, 3)} cons={cons ?? app.cons.slice(0, 3)} />
+
+  <footer>
+    <CTA app={app.slug} label={cta} />
+    {review && <a class="rv" href={review}>Read our full {app.name} review</a>}
+  </footer>
+</section>
+
+<style>
+  .card {
+    position: relative; margin: 28px 0; padding: 24px; border-radius: calc(var(--radius) + 4px);
+    background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow);
+  }
+  header { display: flex; align-items: center; gap: 14px; }
+  .rank {
+    position: absolute; top: -14px; left: 20px; background: var(--ink); color: var(--paper);
+    font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; padding: 2px 12px; border-radius: 999px;
+  }
+  .ttl { flex: 1; min-width: 0; }
+  .ttl .eyebrow { margin: 0; }
+  h3 { margin: 0; font-size: 1.5rem; }
+  .tag { margin: 2px 0 0; color: var(--muted); font-size: 0.93rem; }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 18px 0; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .facts div { background: var(--paper); padding: 10px 12px; }
+  dt { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; }
+  dd { margin: 2px 0 0; font-size: 0.9rem; color: var(--ink); line-height: 1.35; }
+  .body { max-width: none; margin-bottom: 18px; }
+  .body :global(p:first-child) { margin-top: 0; }
+  footer { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 20px; padding-top: 18px; border-top: 1px dashed var(--line); }
+  .rv { font-weight: 600; font-size: 0.93rem; }
+  @media (max-width: 760px) {
+    .facts { grid-template-columns: 1fr 1fr; }
+    .card { padding: 20px 16px; }
+    header { flex-wrap: wrap; }
+  }
+</style>

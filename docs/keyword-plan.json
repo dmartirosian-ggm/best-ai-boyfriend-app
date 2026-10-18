@@ -1,0 +1,1561 @@
+[
+ {
+  "priority": 1,
+  "url": "/",
+  "type": "Home listicle (money page)",
+  "primary": "best ai boyfriend app",
+  "vol": 210,
+  "clusterVol": 28130,
+  "affiliate": "Links out to affiliate apps",
+  "notes": "Homepage. Lead with the ranked list + affiliate CTAs. 'ai boyfriend' (22K) is mostly navigational to apps; treat as a stretch.",
+  "keywords": [
+   {
+    "kw": "best ai boyfriend app",
+    "vol": 210,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": null
+   },
+   {
+    "kw": "best ai boyfriend apps",
+    "vol": 210,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": -0.56
+   },
+   {
+    "kw": "best ai boyfriend",
+    "vol": 260,
+    "kd": 25,
+    "intent": "informational",
+    "yoy": 0.23
+   },
+   {
+    "kw": "ai boyfriend app",
+    "vol": 880,
+    "kd": 25,
+    "intent": "transactional",
+    "yoy": -0.38
+   },
+   {
+    "kw": "ai boyfriend apps",
+    "vol": 880,
+    "kd": 25,
+    "intent": "transactional",
+    "yoy": -0.38
+   },
+   {
+    "kw": "ai boyfriend",
+    "vol": 22200,
+    "kd": 20,
+    "intent": "informational",
+    "yoy": 0.23
+   },
+   {
+    "kw": "boyfriend ai",
+    "vol": 1000,
+    "kd": 25,
+    "intent": "informational",
+    "yoy": -0.12
+   },
+   {
+    "kw": "ai boyfriend chat",
+    "vol": 1300,
+    "kd": 30,
+    "intent": "navigational",
+    "yoy": -0.38
+   },
+   {
+    "kw": "ai boyfriend chatbot",
+    "vol": 1300,
+    "kd": 30,
+    "intent": "informational",
+    "yoy": -0.32
+   },
+   {
+    "kw": "ai chatbot boyfriend",
+    "vol": 720,
+    "kd": 20,
+    "intent": "informational",
+    "yoy": -0.19
+   },
+   {
+    "kw": "my ai boyfriend",
+    "vol": 260,
+    "kd": 34,
+    "intent": "informational",
+    "yoy": null
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/reviews/candy-ai/",
+  "type": "Review",
+  "primary": "candy ai review",
+  "vol": 4400,
+  "clusterVol": 5810,
+  "affiliate": "Yes",
+  "notes": "Biggest review term. Page 1 is app-owned blogs + YouTube \u2014 beatable. Cover 'is it legit' in-page.",
+  "keywords": [
+   {
+    "kw": "candy ai review",
+    "vol": 4400,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.22
+   },
+   {
+    "kw": "candy ai reviews",
+    "vol": 4400,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.22
+   },
+   {
+    "kw": "is candy ai legit",
+    "vol": 1300,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.9
+   },
+   {
+    "kw": "candy ai boyfriend",
+    "vol": 110,
+    "kd": 46,
+    "intent": "informational",
+    "yoy": -0.22
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/free/",
+  "type": "Listicle",
+  "primary": "free ai boyfriend",
+  "vol": 1300,
+  "clusterVol": 3480,
+  "affiliate": "Links out to affiliate apps",
+  "notes": "Free tiers + no-sign-up options. 'no sign up' variants growing fast.",
+  "keywords": [
+   {
+    "kw": "free ai boyfriend",
+    "vol": 1300,
+    "kd": 31,
+    "intent": "informational",
+    "yoy": 1.4
+   },
+   {
+    "kw": "ai boyfriend free",
+    "vol": 1000,
+    "kd": 18,
+    "intent": "informational",
+    "yoy": -0.16
+   },
+   {
+    "kw": "ai boyfriend no sign up",
+    "vol": 260,
+    "kd": 7,
+    "intent": "informational",
+    "yoy": 1.91
+   },
+   {
+    "kw": "ai boyfriend free no sign up",
+    "vol": 170,
+    "kd": 16,
+    "intent": "informational",
+    "yoy": 4.57
+   },
+   {
+    "kw": "ai boyfriend chat free",
+    "vol": 170,
+    "kd": 36,
+    "intent": "navigational",
+    "yoy": -0.56
+   },
+   {
+    "kw": "free ai boyfriend chat",
+    "vol": 140,
+    "kd": 30,
+    "intent": "informational",
+    "yoy": -0.47
+   },
+   {
+    "kw": "ai boyfriend for free",
+    "vol": 140,
+    "kd": 36,
+    "intent": "informational",
+    "yoy": -0.18
+   },
+   {
+    "kw": "free ai boyfriend app for android",
+    "vol": 140,
+    "kd": 36,
+    "intent": "transactional",
+    "yoy": 15
+   },
+   {
+    "kw": "free ai boyfriend app for iphone",
+    "vol": 90,
+    "kd": 16,
+    "intent": "transactional",
+    "yoy": null
+   },
+   {
+    "kw": "free ai boyfriend app",
+    "vol": 70,
+    "kd": 25,
+    "intent": "transactional",
+    "yoy": -0.46
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/candy-ai-pricing/",
+  "type": "Review support",
+  "primary": "is candy ai free",
+  "vol": 1600,
+  "clusterVol": 1990,
+  "affiliate": "Yes",
+  "notes": "Answer 'is it free' up top, then plan table. Link to /free/.",
+  "keywords": [
+   {
+    "kw": "is candy ai free",
+    "vol": 1600,
+    "kd": 18,
+    "intent": "informational",
+    "yoy": 0.23
+   },
+   {
+    "kw": "candy ai pricing",
+    "vol": 390,
+    "kd": 23,
+    "intent": "commercial",
+    "yoy": -0.33
+   },
+   {
+    "kw": "candy ai price",
+    "vol": 390,
+    "kd": 23,
+    "intent": "commercial",
+    "yoy": -0.45
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/reddit-picks/",
+  "type": "Topic / listicle",
+  "primary": "ai boyfriend reddit",
+  "vol": 880,
+  "clusterVol": 1630,
+  "affiliate": "Links out to affiliate apps",
+  "notes": "'What Reddit recommends' roundup. KD 1-6. Quote/paraphrase threads, link to your reviews.",
+  "keywords": [
+   {
+    "kw": "ai boyfriend reddit",
+    "vol": 880,
+    "kd": 6,
+    "intent": "informational",
+    "yoy": -0.45
+   },
+   {
+    "kw": "reddit ai boyfriend",
+    "vol": 480,
+    "kd": 6,
+    "intent": "informational",
+    "yoy": -0.19
+   },
+   {
+    "kw": "best ai boyfriend app reddit",
+    "vol": 110,
+    "kd": 1,
+    "intent": "informational",
+    "yoy": 1.2
+   },
+   {
+    "kw": "best ai boyfriend reddit",
+    "vol": 70,
+    "kd": 1,
+    "intent": "informational",
+    "yoy": 4.5
+   },
+   {
+    "kw": "free ai boyfriend reddit",
+    "vol": 90,
+    "kd": 5,
+    "intent": "informational",
+    "yoy": null
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/is-candy-ai-safe/",
+  "type": "Review support",
+  "primary": "is candy ai safe",
+  "vol": 1600,
+  "clusterVol": 1600,
+  "affiliate": "Yes",
+  "notes": "Page 1 includes a spam PDF and a paywalled Polish site. Weak SERP. Link to review + pricing.",
+  "keywords": [
+   {
+    "kw": "is candy ai safe",
+    "vol": 1600,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.34
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/candy-ai-alternatives/",
+  "type": "Alternatives",
+  "primary": "candy ai alternatives",
+  "vol": 1000,
+  "clusterVol": 1000,
+  "affiliate": "Yes",
+  "notes": "Natural place to rank other affiliate apps (Nomi, OurDream, Kupid, CrushOn).",
+  "keywords": [
+   {
+    "kw": "candy ai alternatives",
+    "vol": 1000,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.81
+   },
+   {
+    "kw": "candy ai alternative",
+    "vol": 1000,
+    "kd": null,
+    "intent": "transactional",
+    "yoy": 0.81
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/reviews/ourdream-ai/",
+  "type": "Review",
+  "primary": "is ourdream ai safe",
+  "vol": 720,
+  "clusterVol": 860,
+  "affiliate": "Yes",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "is ourdream ai safe",
+    "vol": 720,
+    "kd": 11,
+    "intent": "informational",
+    "yoy": -0.63
+   },
+   {
+    "kw": "ourdream ai pricing",
+    "vol": 140,
+    "kd": 5,
+    "intent": "commercial",
+    "yoy": 1.2
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/reviews/nomi-ai/",
+  "type": "Review",
+  "primary": "nomi ai review",
+  "vol": 170,
+  "clusterVol": 630,
+  "affiliate": "Yes",
+  "notes": "Has affiliate (30% lifetime). Cover free/safe/pricing in one page.",
+  "keywords": [
+   {
+    "kw": "nomi ai review",
+    "vol": 170,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.47
+   },
+   {
+    "kw": "is nomi ai free",
+    "vol": 170,
+    "kd": 1,
+    "intent": "informational",
+    "yoy": -0.21
+   },
+   {
+    "kw": "is nomi ai safe",
+    "vol": 110,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.22
+   },
+   {
+    "kw": "nomi ai boyfriend",
+    "vol": 110,
+    "kd": 17,
+    "intent": "informational",
+    "yoy": -0.36
+   },
+   {
+    "kw": "nomi ai pricing",
+    "vol": 70,
+    "kd": 1,
+    "intent": "commercial",
+    "yoy": -0.25
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/reviews/kindroid/",
+  "type": "Review",
+  "primary": "kindroid reviews",
+  "vol": 170,
+  "clusterVol": 520,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": "Searches up 189-1500% YoY. Check whether Kindroid has a program before investing heavily.",
+  "keywords": [
+   {
+    "kw": "kindroid alternatives",
+    "vol": 70,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": 0.4
+   },
+   {
+    "kw": "kindroid reviews",
+    "vol": 170,
+    "kd": 15,
+    "intent": "informational",
+    "yoy": 15
+   },
+   {
+    "kw": "kindroid review",
+    "vol": 170,
+    "kd": 1,
+    "intent": "informational",
+    "yoy": 1.89
+   },
+   {
+    "kw": "is kindroid free",
+    "vol": 140,
+    "kd": 15,
+    "intent": "informational",
+    "yoy": 2.71
+   },
+   {
+    "kw": "kindroid pricing",
+    "vol": 90,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": 2.4
+   },
+   {
+    "kw": "is kindroid safe",
+    "vol": 50,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 2.67
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/vs/candy-ai-vs-ourdream-ai/",
+  "type": "Vs",
+  "primary": "ourdream ai vs candy ai",
+  "vol": 210,
+  "clusterVol": 210,
+  "affiliate": "Yes",
+  "notes": "Both pay 40% rev share \u2014 a pure money page.",
+  "keywords": [
+   {
+    "kw": "ourdream ai vs candy ai",
+    "vol": 210,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.19
+   }
+  ]
+ },
+ {
+  "priority": 1,
+  "url": "/vs/kindroid-vs-nomi/",
+  "type": "Vs",
+  "primary": "kindroid vs nomi",
+  "vol": 110,
+  "clusterVol": 200,
+  "affiliate": "Yes",
+  "notes": "Best 'vs' pair found (~200/mo combined, growing). Both are top boyfriend picks.",
+  "keywords": [
+   {
+    "kw": "kindroid vs nomi",
+    "vol": 110,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.27
+   },
+   {
+    "kw": "nomi vs kindroid",
+    "vol": 90,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.22
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/character-ai-alternatives/",
+  "type": "Alternatives",
+  "primary": "character ai alternatives",
+  "vol": 14800,
+  "clusterVol": 14840,
+  "affiliate": "Links out to affiliate apps",
+  "notes": "Biggest term found (14.8K) but broad roleplay intent, not boyfriend. Angle: 'for an AI boyfriend'. Harder; build after core pages.",
+  "keywords": [
+   {
+    "kw": "character ai alternatives",
+    "vol": 14800,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": 1.25
+   },
+   {
+    "kw": "character ai alternative",
+    "vol": 14800,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": 1.75
+   },
+   {
+    "kw": "character ai boyfriend",
+    "vol": 40,
+    "kd": 11,
+    "intent": "informational",
+    "yoy": -0.57
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/janitor-ai-alternatives/",
+  "type": "Alternatives",
+  "primary": "janitor ai alternatives",
+  "vol": 2400,
+  "clusterVol": 2400,
+  "affiliate": "Links out to affiliate apps",
+  "notes": "Same as Character AI: roleplay audience. Good funnel to CrushOn/Candy.",
+  "keywords": [
+   {
+    "kw": "janitor ai alternatives",
+    "vol": 2400,
+    "kd": null,
+    "intent": "navigational",
+    "yoy": 0.26
+   },
+   {
+    "kw": "janitor ai alternative",
+    "vol": 2400,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.21
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/reviews/talkie-ai/",
+  "type": "Review",
+  "primary": "is talkie ai safe",
+  "vol": 590,
+  "clusterVol": 1610,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "talkie ai alternative",
+    "vol": 90,
+    "kd": 2,
+    "intent": "informational",
+    "yoy": 1
+   },
+   {
+    "kw": "is talkie ai safe",
+    "vol": 590,
+    "kd": 2,
+    "intent": "informational",
+    "yoy": 0.5
+   },
+   {
+    "kw": "is talkie ai free",
+    "vol": 140,
+    "kd": 9,
+    "intent": "informational",
+    "yoy": 1.43
+   },
+   {
+    "kw": "talkie ai review",
+    "vol": 70,
+    "kd": 5,
+    "intent": "commercial",
+    "yoy": -0.64
+   },
+   {
+    "kw": "ai boyfriend talkie",
+    "vol": 720,
+    "kd": 36,
+    "intent": "informational",
+    "yoy": 1.77
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/polybuzz-alternatives/",
+  "type": "Alternatives",
+  "primary": "polybuzz alternatives",
+  "vol": 1600,
+  "clusterVol": 1600,
+  "affiliate": "Links out to affiliate apps",
+  "notes": "+233% YoY. Page 1 is slashdot, Reddit, app blogs \u2014 beatable.",
+  "keywords": [
+   {
+    "kw": "polybuzz alternatives",
+    "vol": 1600,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": 2.33
+   },
+   {
+    "kw": "polybuzz alternative",
+    "vol": 1300,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 2.33
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/reviews/replika/",
+  "type": "Review",
+  "primary": "replika review",
+  "vol": 320,
+  "clusterVol": 1450,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "replika review",
+    "vol": 320,
+    "kd": 7,
+    "intent": "informational",
+    "yoy": -0.64
+   },
+   {
+    "kw": "replika reviews",
+    "vol": 320,
+    "kd": 3,
+    "intent": "informational",
+    "yoy": -0.64
+   },
+   {
+    "kw": "is replika free",
+    "vol": 390,
+    "kd": 31,
+    "intent": "informational",
+    "yoy": -0.64
+   },
+   {
+    "kw": "is replika safe",
+    "vol": 210,
+    "kd": 1,
+    "intent": "informational",
+    "yoy": -0.19
+   },
+   {
+    "kw": "replika pro",
+    "vol": 110,
+    "kd": 19,
+    "intent": "transactional",
+    "yoy": -0.57
+   },
+   {
+    "kw": "replika pricing",
+    "vol": 90,
+    "kd": 25,
+    "intent": "commercial",
+    "yoy": -0.76
+   },
+   {
+    "kw": "replika boyfriend",
+    "vol": 70,
+    "kd": 39,
+    "intent": "informational",
+    "yoy": null
+   },
+   {
+    "kw": "replika ai boyfriend",
+    "vol": 260,
+    "kd": 39,
+    "intent": "informational",
+    "yoy": -0.65
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/reviews/polybuzz/",
+  "type": "Review",
+  "primary": "is polybuzz safe",
+  "vol": 720,
+  "clusterVol": 1410,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "is polybuzz safe",
+    "vol": 720,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.87
+   },
+   {
+    "kw": "is polybuzz free",
+    "vol": 480,
+    "kd": 10,
+    "intent": "informational",
+    "yoy": 0.5
+   },
+   {
+    "kw": "polybuzz review",
+    "vol": 210,
+    "kd": 3,
+    "intent": "commercial",
+    "yoy": 1.29
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/reviews/character-ai/",
+  "type": "Review",
+  "primary": "is character ai safe",
+  "vol": 880,
+  "clusterVol": 1200,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "is character ai safe",
+    "vol": 880,
+    "kd": 7,
+    "intent": "informational",
+    "yoy": -0.45
+   },
+   {
+    "kw": "character ai review",
+    "vol": 320,
+    "kd": 10,
+    "intent": "informational",
+    "yoy": null
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/reviews/janitor-ai/",
+  "type": "Review",
+  "primary": "is janitor ai safe",
+  "vol": 720,
+  "clusterVol": 830,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "is janitor ai safe",
+    "vol": 720,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.23
+   },
+   {
+    "kw": "janitor ai review",
+    "vol": 110,
+    "kd": null,
+    "intent": "informational",
+    "yoy": null
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/reviews/roger-ai/",
+  "type": "Review",
+  "primary": "roger ai boyfriend",
+  "vol": 390,
+  "clusterVol": 560,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": "Breakout: 'roger ai boyfriend' +4300% YoY. Verify what it is before writing.",
+  "keywords": [
+   {
+    "kw": "roger ai boyfriend",
+    "vol": 390,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 43
+   },
+   {
+    "kw": "roger ai app boyfriend",
+    "vol": 170,
+    "kd": null,
+    "intent": "navigational",
+    "yoy": null
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/ourdream-ai-alternatives/",
+  "type": "Alternatives",
+  "primary": "ourdream ai alternative",
+  "vol": 480,
+  "clusterVol": 480,
+  "affiliate": "Yes",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "ourdream ai alternative",
+    "vol": 480,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 1.81
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/chatgpt-boyfriend/",
+  "type": "Topic / listicle",
+  "primary": "chatgpt boyfriend",
+  "vol": 210,
+  "clusterVol": 460,
+  "affiliate": "Links out to affiliate apps",
+  "notes": "+540% YoY. How-to plus 'why a dedicated app is better' \u2192 listicle.",
+  "keywords": [
+   {
+    "kw": "chatgpt boyfriend",
+    "vol": 210,
+    "kd": 1,
+    "intent": "informational",
+    "yoy": -0.64
+   },
+   {
+    "kw": "ai boyfriend chatgpt",
+    "vol": 170,
+    "kd": 8,
+    "intent": "informational",
+    "yoy": 5.4
+   },
+   {
+    "kw": "chatgpt boyfriend prompt",
+    "vol": 50,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.91
+   },
+   {
+    "kw": "ai boyfriend prompt",
+    "vol": 30,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 1
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/crushon-ai-alternatives/",
+  "type": "Alternatives",
+  "primary": "crushon ai alternatives",
+  "vol": 390,
+  "clusterVol": 390,
+  "affiliate": "Yes",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "crushon ai alternatives",
+    "vol": 390,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": -0.19
+   },
+   {
+    "kw": "crushon ai alternative",
+    "vol": 390,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": -0.46
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/ai-boyfriend-voice-call/",
+  "type": "Topic / listicle",
+  "primary": "ai boyfriend call",
+  "vol": 390,
+  "clusterVol": 390,
+  "affiliate": "Links out to affiliate apps",
+  "notes": "+414% YoY. Listicle of apps with voice calls.",
+  "keywords": [
+   {
+    "kw": "ai boyfriend call",
+    "vol": 390,
+    "kd": 10,
+    "intent": "informational",
+    "yoy": 4.14
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/gay-ai-boyfriend/",
+  "type": "Topic / listicle",
+  "primary": "gay ai boyfriend",
+  "vol": 390,
+  "clusterVol": 390,
+  "affiliate": "Links out to affiliate apps",
+  "notes": "+243% YoY. Under-served angle.",
+  "keywords": [
+   {
+    "kw": "gay ai boyfriend",
+    "vol": 390,
+    "kd": 25,
+    "intent": "informational",
+    "yoy": 2.43
+   }
+  ]
+ },
+ {
+  "priority": 2,
+  "url": "/reviews/crushon-ai/",
+  "type": "Review",
+  "primary": "is crushon ai safe",
+  "vol": 210,
+  "clusterVol": 320,
+  "affiliate": "Yes",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "is crushon ai safe",
+    "vol": 210,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.64
+   },
+   {
+    "kw": "crushon ai review",
+    "vol": 110,
+    "kd": 8,
+    "intent": "commercial",
+    "yoy": -0.18
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/best-ai-companion-apps/",
+  "type": "Topic / listicle",
+  "primary": "best ai companion",
+  "vol": 1300,
+  "clusterVol": 2180,
+  "affiliate": "Links out to affiliate apps",
+  "notes": "Adjacent, gender-neutral. Bigger volume, off-topic for the EMD. Tier 3.",
+  "keywords": [
+   {
+    "kw": "best ai companion",
+    "vol": 1300,
+    "kd": 8,
+    "intent": "commercial",
+    "yoy": null
+   },
+   {
+    "kw": "best ai companion app",
+    "vol": 880,
+    "kd": 5,
+    "intent": "commercial",
+    "yoy": 0.39
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/reviews/joi-ai/",
+  "type": "Review",
+  "primary": "joi ai review",
+  "vol": 720,
+  "clusterVol": 720,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "joi ai review",
+    "vol": 720,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.5
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/reviews/chai-ai/",
+  "type": "Review",
+  "primary": "chai ai review",
+  "vol": 390,
+  "clusterVol": 710,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "chai ai review",
+    "vol": 390,
+    "kd": 9,
+    "intent": "informational",
+    "yoy": 1.27
+   },
+   {
+    "kw": "is chai ai safe",
+    "vol": 320,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.58
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/spicychat-alternatives/",
+  "type": "Alternatives",
+  "primary": "spicychat alternatives",
+  "vol": 590,
+  "clusterVol": 590,
+  "affiliate": "Links out to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "spicychat alternatives",
+    "vol": 590,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": 0.23
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/virtual-boyfriend/",
+  "type": "Topic / listicle",
+  "primary": "virtual boyfriend",
+  "vol": 320,
+  "clusterVol": 580,
+  "affiliate": "Links out to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "virtual boyfriend",
+    "vol": 320,
+    "kd": 6,
+    "intent": "informational",
+    "yoy": 0.5
+   },
+   {
+    "kw": "virtual boyfriend app",
+    "vol": 50,
+    "kd": 35,
+    "intent": "transactional",
+    "yoy": -0.22
+   },
+   {
+    "kw": "ai husband",
+    "vol": 210,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.34
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/ai-boyfriend-games/",
+  "type": "Topic / listicle",
+  "primary": "ai boyfriend games",
+  "vol": 320,
+  "clusterVol": 530,
+  "affiliate": "Links out to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "ai boyfriend games",
+    "vol": 320,
+    "kd": 15,
+    "intent": "informational",
+    "yoy": 5.55
+   },
+   {
+    "kw": "ai boyfriend game",
+    "vol": 320,
+    "kd": 26,
+    "intent": "informational",
+    "yoy": 1.82
+   },
+   {
+    "kw": "ai dating sim",
+    "vol": 210,
+    "kd": 14,
+    "intent": "commercial",
+    "yoy": -0.47
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/reviews/anima-ai/",
+  "type": "Review",
+  "primary": "anima ai boyfriend",
+  "vol": 320,
+  "clusterVol": 430,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "anima ai boyfriend",
+    "vol": 320,
+    "kd": 9,
+    "intent": "informational",
+    "yoy": 0.55
+   },
+   {
+    "kw": "anima ai boyfriend app",
+    "vol": 110,
+    "kd": 18,
+    "intent": "transactional",
+    "yoy": null
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/reviews/muah-ai/",
+  "type": "Review",
+  "primary": "is muah ai safe",
+  "vol": 210,
+  "clusterVol": 350,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "muah ai alternatives",
+    "vol": 30,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 3.5
+   },
+   {
+    "kw": "is muah ai safe",
+    "vol": 210,
+    "kd": 8,
+    "intent": "informational",
+    "yoy": -0.34
+   },
+   {
+    "kw": "muah ai review",
+    "vol": 110,
+    "kd": 1,
+    "intent": "informational",
+    "yoy": -0.48
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/how-to-make-an-ai-boyfriend/",
+  "type": "Topic / listicle",
+  "primary": "create ai boyfriend",
+  "vol": 140,
+  "clusterVol": 330,
+  "affiliate": "Links out to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "create ai boyfriend",
+    "vol": 140,
+    "kd": 37,
+    "intent": "informational",
+    "yoy": -0.47
+   },
+   {
+    "kw": "how to get an ai boyfriend",
+    "vol": 70,
+    "kd": 34,
+    "intent": "informational",
+    "yoy": null
+   },
+   {
+    "kw": "how to make an ai boyfriend",
+    "vol": 30,
+    "kd": 32,
+    "intent": "informational",
+    "yoy": null
+   },
+   {
+    "kw": "what is an ai boyfriend",
+    "vol": 90,
+    "kd": 45,
+    "intent": "informational",
+    "yoy": -0.22
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/reviews/dreambf/",
+  "type": "Review",
+  "primary": "dream bf",
+  "vol": 320,
+  "clusterVol": 320,
+  "affiliate": "Likely (DreamGF prog.)",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "dream bf",
+    "vol": 320,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.23
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/reviews/spicychat/",
+  "type": "Review",
+  "primary": "is spicychat safe",
+  "vol": 210,
+  "clusterVol": 260,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "is spicychat safe",
+    "vol": 210,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.5
+   },
+   {
+    "kw": "spicychat review",
+    "vol": 50,
+    "kd": 11,
+    "intent": "informational",
+    "yoy": 2.5
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/anime-ai-boyfriend/",
+  "type": "Topic / listicle",
+  "primary": "ai anime boyfriend",
+  "vol": 210,
+  "clusterVol": 260,
+  "affiliate": "Links out to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "ai anime boyfriend",
+    "vol": 210,
+    "kd": 18,
+    "intent": "informational",
+    "yoy": -0.35
+   },
+   {
+    "kw": "ai boyfriend anime",
+    "vol": 50,
+    "kd": null,
+    "intent": "informational",
+    "yoy": null
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/vs/character-ai-vs-janitor-ai/",
+  "type": "Vs",
+  "primary": "janitor ai vs character ai",
+  "vol": 110,
+  "clusterVol": 180,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "janitor ai vs character ai",
+    "vol": 110,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.22
+   },
+   {
+    "kw": "character ai vs janitor ai",
+    "vol": 70,
+    "kd": null,
+    "intent": "informational",
+    "yoy": null
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/chai-ai-alternatives/",
+  "type": "Alternatives",
+  "primary": "chai ai alternatives",
+  "vol": 170,
+  "clusterVol": 170,
+  "affiliate": "Links out to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "chai ai alternatives",
+    "vol": 170,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 11
+   },
+   {
+    "kw": "chai ai alternative",
+    "vol": 110,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 1
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/reviews/botify-ai/",
+  "type": "Review",
+  "primary": "botify ai review",
+  "vol": 170,
+  "clusterVol": 170,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "botify ai review",
+    "vol": 170,
+    "kd": 18,
+    "intent": "commercial",
+    "yoy": -0.85
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/nsfw-ai-boyfriend/",
+  "type": "Topic / listicle",
+  "primary": "spicy ai boyfriend",
+  "vol": 170,
+  "clusterVol": 170,
+  "affiliate": "Links out to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "spicy ai boyfriend",
+    "vol": 170,
+    "kd": 18,
+    "intent": "informational",
+    "yoy": -0.92
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/vs/chai-vs-character-ai/",
+  "type": "Vs",
+  "primary": "chai vs character ai",
+  "vol": 90,
+  "clusterVol": 160,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "chai vs character ai",
+    "vol": 90,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.64
+   },
+   {
+    "kw": "character ai vs chai",
+    "vol": 70,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.78
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/reviews/lovescape/",
+  "type": "Review",
+  "primary": "lovescape review",
+  "vol": 140,
+  "clusterVol": 140,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "lovescape review",
+    "vol": 140,
+    "kd": null,
+    "intent": "informational",
+    "yoy": null
+   },
+   {
+    "kw": "lovescape ai review",
+    "vol": 90,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.35
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/vs/polybuzz-vs-character-ai/",
+  "type": "Vs",
+  "primary": "polybuzz vs character ai",
+  "vol": 70,
+  "clusterVol": 120,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "polybuzz vs character ai",
+    "vol": 70,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": null
+   },
+   {
+    "kw": "character ai vs polybuzz",
+    "vol": 50,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": null
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/reviews/eva-ai/",
+  "type": "Review",
+  "primary": "eva ai review",
+  "vol": 110,
+  "clusterVol": 110,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "eva ai review",
+    "vol": 110,
+    "kd": 12,
+    "intent": "informational",
+    "yoy": -0.84
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/replika-alternatives/",
+  "type": "Alternatives",
+  "primary": "replika alternatives",
+  "vol": 70,
+  "clusterVol": 70,
+  "affiliate": "Links out to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "replika alternatives",
+    "vol": 70,
+    "kd": null,
+    "intent": "commercial",
+    "yoy": -0.5
+   },
+   {
+    "kw": "replika alternative",
+    "vol": 70,
+    "kd": 9,
+    "intent": "commercial",
+    "yoy": -0.5
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/vs/nomi-vs-replika/",
+  "type": "Vs",
+  "primary": "nomi vs replika",
+  "vol": 40,
+  "clusterVol": 70,
+  "affiliate": "Yes",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "nomi vs replika",
+    "vol": 40,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.71
+   },
+   {
+    "kw": "replika vs nomi",
+    "vol": 30,
+    "kd": null,
+    "intent": "informational",
+    "yoy": 0.67
+   }
+  ]
+ },
+ {
+  "priority": 3,
+  "url": "/vs/kindroid-vs-replika/",
+  "type": "Vs",
+  "primary": "kindroid vs replika",
+  "vol": 40,
+  "clusterVol": 70,
+  "affiliate": "No \u2014 funnel to affiliate apps",
+  "notes": null,
+  "keywords": [
+   {
+    "kw": "kindroid vs replika",
+    "vol": 40,
+    "kd": null,
+    "intent": "informational",
+    "yoy": -0.2
+   },
+   {
+    "kw": "replika vs kindroid",
+    "vol": 30,
+    "kd": null,
+    "intent": "informational",
+    "yoy": null
+   }
+  ]
+ }
+]

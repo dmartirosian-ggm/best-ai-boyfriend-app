@@ -1,0 +1,59 @@
+---
+/** Quick comparison table. <CompareTable apps={["candy-ai","nomi-ai"]} /> */
+import { getApps, reviewHref, ctaHref, ctaRel, NSFW_LABEL } from '~/lib/apps';
+import Score from './Score.astro';
+interface Props { apps: string[]; caption?: string }
+const { apps: slugs, caption } = Astro.props;
+const apps = getApps(slugs);
+const yn = (v: boolean | null) => (v === null ? '—' : v ? '✓' : '✗');
+---
+
+<div class="tw">
+  <table>
+    {caption && <caption>{caption}</caption>}
+    <thead>
+      <tr>
+        <th scope="col">App</th>
+        <th scope="col">Score</th>
+        <th scope="col">Best for</th>
+        <th scope="col">Price</th>
+        <th scope="col">Voice calls</th>
+        <th scope="col">Images</th>
+        <th scope="col">18+</th>
+        <th scope="col"><span class="visually-hidden">Link</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        apps.map((a) => (
+          <tr>
+            <th scope="row">
+              {reviewHref(a) ? <a href={reviewHref(a)}>{a.name}</a> : a.name}
+            </th>
+            <td><Score score={a.score} /></td>
+            <td>{a.bestFor}</td>
+            <td>{a.startingPrice}</td>
+            <td class="c">{yn(a.features.voiceCalls)}</td>
+            <td class="c">{yn(a.features.imageGen)}</td>
+            <td>{NSFW_LABEL[a.nsfw]}</td>
+            <td>
+              <a class="btn btn--sm" href={ctaHref(a)} rel={ctaRel(a)} target="_blank">Visit</a>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .tw { margin: 1.6em 0; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 720px; }
+  caption { text-align: left; padding: 12px 14px 0; font-weight: 700; }
+  th, td { padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  thead th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); background: var(--paper-2); }
+  tbody tr:last-child > * { border-bottom: 0; }
+  tbody th { font-family: var(--font-display); font-size: 1.02rem; white-space: nowrap; }
+  tbody th a { color: var(--ink); }
+  .c { text-align: center; }
+</style>

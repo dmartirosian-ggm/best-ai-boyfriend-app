@@ -1,0 +1,22 @@
+---
+/** <Callout type="tip" title="Quick answer">markdown…</Callout> */
+interface Props { type?: 'tip' | 'warning' | 'info' | 'verdict'; title?: string }
+const { type = 'info', title } = Astro.props;
+const icon = { tip: '💡', warning: '⚠️', info: 'ℹ️', verdict: '⭐' }[type];
+---
+
+<aside class={`callout callout--${type}`}>
+  {title && <p class="t"><span aria-hidden="true">{icon}</span> {title}</p>}
+  <div class="b"><slot /></div>
+</aside>
+
+<style>
+  .callout { margin: 1.6em 0; padding: 1em 1.2em; border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); }
+  .callout--tip { border-color: color-mix(in srgb, var(--good) 40%, var(--line)); background: color-mix(in srgb, var(--good) 7%, var(--card)); }
+  .callout--warning { border-color: color-mix(in srgb, var(--gold) 50%, var(--line)); background: color-mix(in srgb, var(--gold) 9%, var(--card)); }
+  .callout--verdict { border: 2px solid var(--accent); background: var(--accent-soft); }
+  .t { margin: 0 0 0.3em; font-weight: 700; color: var(--ink); }
+  .b :global(p) { margin: 0.4em 0; }
+  .b :global(> :first-child) { margin-top: 0; }
+  .b :global(> :last-child) { margin-bottom: 0; }
+</style>

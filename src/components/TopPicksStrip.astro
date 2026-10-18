@@ -1,0 +1,39 @@
+---
+/**
+ * Above-the-fold "quick picks" for listicles.
+ * <TopPicksStrip picks={[{ app: "candy-ai", label: "Best overall" }, ...]} />
+ */
+import { getApp } from '~/lib/apps';
+import AppMark from './AppMark.astro';
+import Score from './Score.astro';
+import CTA from './CTA.astro';
+interface Props { picks: { app: string; label: string }[] }
+const picks = Astro.props.picks.map((p) => ({ ...p, a: getApp(p.app) }));
+---
+
+<div class="strip">
+  {
+    picks.map(({ a, label }, i) => (
+      <div class:list={['pick', i === 0 && 'first']}>
+        <p class="eyebrow">{label}</p>
+        <div class="row">
+          <AppMark app={a} size={40} />
+          <a class="nm" href={`#${a.slug}`}>{a.name}</a>
+          <Score score={a.score} />
+        </div>
+        <p class="muted d">{a.startingPrice}</p>
+        <CTA app={a.slug} size="sm" variant={i === 0 ? 'solid' : 'ghost'} />
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 1.5em 0 2em; }
+  .pick { padding: 16px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .first { border: 2px solid var(--accent); }
+  .pick p { margin: 0; }
+  .row { display: flex; align-items: center; gap: 10px; width: 100%; }
+  .nm { flex: 1; font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+  .d { font-size: 0.85rem; }
+</style>

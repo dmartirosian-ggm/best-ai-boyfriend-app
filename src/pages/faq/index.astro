@@ -1,0 +1,46 @@
+---
+import { marked } from 'marked';
+import Hub from '~/components/Hub.astro';
+import { getArticles, articleHref, TYPE_LABEL } from '~/lib/articles';
+const all = await getArticles();
+const faqPages = all.filter((a) => a.data.type === 'faq');
+// Every FAQ answered anywhere on the site, grouped by the page it lives on.
+const groups = all.filter((a) => a.data.type !== 'faq' && a.data.faqs.length > 0);
+const total = all.reduce((n, a) => n + a.data.faqs.length, 0);
+---
+
+<Hub
+  title="AI Boyfriend FAQ"
+  h1="AI boyfriend FAQ"
+  description="Straight answers to common questions about AI boyfriends: safety, privacy, cost, free options, and how specific apps work."
+  intro={`${total} questions answered across the site. Start with the big ones below, or browse every app's FAQs further down.`}
+  entries={faqPages}
+>
+<div class="all" slot="after">
+  <h2>Every question, by topic</h2>
+  {
+    groups.map((g) => (
+      <section>
+        <h3>
+          <a href={articleHref(g)}>{g.data.h1 ?? g.data.title}</a> <span class="eyebrow">{TYPE_LABEL[g.data.type]}</span>
+        </h3>
+        {g.data.faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <div set:html={marked.parse(f.a, { async: false })} />
+          </details>
+        ))}
+      </section>
+    ))
+  }
+</div>
+</Hub>
+
+<style>
+  .all { max-width: 820px; margin-top: 48px; }
+  h3 a { color: var(--ink); text-decoration: none; }
+  h3 .eyebrow { font-family: var(--font-body); font-size: 0.7rem; margin-left: 6px; }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; padding: 12px 0; font-weight: 600; }
+  details div { color: var(--ink-2); padding-bottom: 12px; }
+</style>

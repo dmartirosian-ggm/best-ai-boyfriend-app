@@ -1,0 +1,19 @@
+---
+import Hub from '~/components/Hub.astro';
+import { getArticles } from '~/lib/articles';
+import { getApp } from '~/lib/apps';
+const all = await getArticles();
+const reviews = all
+  .filter((a) => a.data.type === 'review' && a.data.apps[0])
+  .sort((a, b) => getApp(b.data.apps[0]).score - getApp(a.data.apps[0]).score);
+const support = all.filter((a) => a.data.type === 'review-support');
+---
+
+<Hub
+  title="AI Boyfriend App Reviews"
+  h1="AI boyfriend & companion app reviews"
+  description="Hands-on reviews of every major AI boyfriend and companion app: pricing, safety, memory, voice, and whether it's worth paying for."
+  intro="Every app we've tested, sorted by score. Each review covers pricing, whether it's free, safety and privacy, and how good it is as a boyfriend."
+  entries={[...reviews, ...support]}
+  showScores
+/>

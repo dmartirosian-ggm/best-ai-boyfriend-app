@@ -1,0 +1,55 @@
+---
+import { NAV, SITE } from '~/config';
+const path = Astro.url.pathname;
+const links = NAV.map((item) => ({ ...item, current: path === item.href ? ('page' as const) : undefined }));
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="logo" href="/" aria-label={`${SITE.name} home`}>
+      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 28s-11-6.6-11-14.2C5 9.5 8.2 6 12.2 6c1.6 0 3 .7 3.8 1.9C16.8 6.7 18.2 6 19.8 6 23.8 6 27 9.5 27 13.8 27 21.4 16 28 16 28z" fill="var(--accent)"></path>
+        <circle cx="12.5" cy="14" r="1.6" fill="var(--paper)"></circle>
+        <circle cx="19.5" cy="14" r="1.6" fill="var(--paper)"></circle>
+      </svg>
+      <span>Best<b>AI</b>Boyfriend</span>
+    </a>
+    <nav class="desktop" aria-label="Main">
+      {links.map((l) => <a href={l.href} aria-current={l.current}>{l.label}</a>)}
+    </nav>
+    <details class="mobile">
+      <summary aria-label="Menu"><span></span><span></span><span></span></summary>
+      <nav aria-label="Main (mobile)">
+        {links.map((l) => <a href={l.href} aria-current={l.current}>{l.label}</a>)}
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; }
+  .logo b { color: var(--accent); font-weight: 700; }
+  nav { display: flex; gap: 4px; }
+  nav a { color: var(--ink-2); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 8px 12px; border-radius: 999px; }
+  nav a:hover, nav a[aria-current='page'] { background: var(--accent-soft); color: var(--accent); }
+  .mobile { display: none; }
+  summary { list-style: none; cursor: pointer; display: grid; gap: 5px; padding: 10px; }
+  summary::-webkit-details-marker { display: none; }
+  summary span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
+  .mobile nav {
+    position: absolute; left: 0; right: 0; top: 64px;
+    flex-direction: column; padding: 12px 16px 20px;
+    background: var(--paper); border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 860px) {
+    .desktop { display: none; }
+    .mobile { display: block; }
+  }
+</style>

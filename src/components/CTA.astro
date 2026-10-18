@@ -1,0 +1,12 @@
+---
+/** Outbound button for an app. Usage in MDX: <CTA app="candy-ai" /> or <CTA app="candy-ai" label="Try it free" /> */
+import { getApp, ctaHref, ctaRel } from '~/lib/apps';
+interface Props { app: string; label?: string; variant?: 'solid' | 'ghost'; size?: 'sm' | 'md' }
+const { app: slug, label, variant = 'solid', size = 'md' } = Astro.props;
+const app = getApp(slug);
+const cls = ['btn', variant === 'ghost' && 'btn--ghost', size === 'sm' && 'btn--sm'].filter(Boolean).join(' ');
+---
+
+<a class={cls} href={ctaHref(app)} rel={ctaRel(app)} target="_blank" data-app={app.slug}>
+  {label ?? `Visit ${app.name}`} <span aria-hidden="true">→</span>
+</a>

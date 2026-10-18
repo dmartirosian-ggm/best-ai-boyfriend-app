@@ -1,0 +1,52 @@
+---
+import Base from '~/layouts/Base.astro';
+import { articleHref, TYPE_LABEL, type Article } from '~/lib/articles';
+import { getApp } from '~/lib/apps';
+import AppMark from './AppMark.astro';
+import Score from './Score.astro';
+
+interface Props { title: string; h1: string; intro: string; description: string; entries: Article[]; showScores?: boolean }
+const { title, h1, intro, description, entries, showScores = false } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <div class="wrap hub">
+    <p class="eyebrow">{entries.length} articles</p>
+    <h1>{h1}</h1>
+    <p class="intro">{intro}</p>
+    <slot />
+    <ul class="grid">
+      {
+        entries.map((e) => {
+          const app = showScores && e.data.apps[0] ? getApp(e.data.apps[0]) : null;
+          return (
+            <li>
+              <a href={articleHref(e)}>
+                <div class="top">
+                  {app && <AppMark app={app} size={40} />}
+                  <span class="eyebrow">{TYPE_LABEL[e.data.type]}</span>
+                  {app && <Score score={app.score} />}
+                </div>
+                <span class="t">{e.data.h1 ?? e.data.title}</span>
+                <span class="d">{e.data.description}</span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <slot name="after" />
+  </div>
+</Base>
+
+<style>
+  .hub { padding-top: 40px; }
+  .intro { max-width: 60ch; color: var(--ink-2); font-size: 1.1rem; }
+  .grid { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .grid a { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 18px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); text-decoration: none; transition: border-color 0.12s; }
+  .grid a:hover { border-color: var(--accent); }
+  .top { display: flex; align-items: center; gap: 10px; }
+  .top .eyebrow { flex: 1; }
+  .t { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--ink); line-height: 1.25; }
+  .d { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+</style>

@@ -1,0 +1,8 @@
+---
+import { getEntry } from 'astro:content';
+import Article from '~/layouts/Article.astro';
+const entry = await getEntry('articles', 'home');
+if (!entry) throw new Error('Missing src/content/articles/home.mdx');
+---
+
+<Article entry={entry} />

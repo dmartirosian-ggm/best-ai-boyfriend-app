@@ -24,7 +24,7 @@ npm run check:content   # fast lint of all articles (frontmatter, MDX, app slugs
 
 ## Before launch
 
-1. **Domain:** set `SITE_URL` (or edit `astro.config.mjs`) and update `public/robots.txt`.
+1. **Domain:** set the `SITE_URL` env var in your host (or edit the fallback in `astro.config.mjs`). Canonicals, `robots.txt` and the sitemap all derive from it. Submit `https://yourdomain/sitemap-index.xml` (or `/sitemap.xml`) in Search Console.
 2. **Affiliate links:** paste tracking URLs into `affiliateUrl` in `src/data/apps.ts`. Until then `/go/{slug}/` redirects to the app's homepage. Programs (from the keyword plan): Candy AI, OurDream AI, Nomi AI, CrushOn AI, Kupid AI, DreamGF/DreamBF.
 3. **Verify facts.** Prices in `apps.ts` were researched from third-party sources on 2026-10-18 (official sites couldn't be reached), several at low confidence — see `notes` in `apps.research.json`. Check each app's checkout page, then bump `verified`.
 4. **Add first-hand material.** The copy is written in the site's editorial voice; add your own screenshots, test notes and personal details to reviews to strengthen E-E-A-T, and personalize `/about/`.

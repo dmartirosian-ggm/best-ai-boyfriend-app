@@ -30,6 +30,7 @@ export default defineConfig({
     mdx(),
     sitemap({
       filter: (page) => !page.includes('/go/'),
+      xslURL: '/sitemap.xsl', // human-readable view in browsers
       serialize(item) {
         const updated = lastmod.get(new URL(item.url).pathname);
         return updated ? { ...item, lastmod: updated } : item;

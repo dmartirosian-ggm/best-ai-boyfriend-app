@@ -15,7 +15,7 @@ export function getApps(slugs: string[]): App[] {
 
 /**
  * Outbound link for CTAs. Affiliate apps go through /go/{slug}/ so links can be swapped in one place.
- * `fromPath` (the current page's pathname) is passed along as ?src= and forwarded to the network as sub1.
+ * `fromPath` (the current page's pathname) is passed along as ?src= and forwarded to the network as sub3.
  */
 export function ctaHref(app: App, fromPath?: string): string {
   if (!app.hasAffiliate) return app.website;

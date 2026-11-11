@@ -1,8 +1,10 @@
 ---
 /**
  * Affiliate redirect: /go/{slug}/ -> app.affiliateUrl (falls back to the app's website).
- * The page a click came from arrives as ?src= and is forwarded to the network as sub1
- * (Everflow-style sub IDs), so conversions can be attributed per page.
+ * The page a click came from arrives as ?src= and is forwarded to the network as sub3
+ * (Everflow sub IDs), so conversions can be attributed per page. sub1/sub2 are left alone:
+ * OurDream's Create landers read sub1 as companion gender and sub2 as traffic type, so set
+ * those in the affiliateUrl itself (e.g. ...&sub1=male&sub2=nsfw).
  * Static meta-refresh so it works on any host.
  */
 import { APPS } from '~/data/apps';
@@ -11,7 +13,8 @@ export function getStaticPaths() {
 }
 const { app } = Astro.props;
 const target = app.affiliateUrl ?? app.website;
-const tagSub1 = app.affiliateUrl !== null;
+const SOURCE_PARAM = 'sub3';
+const tagSource = app.affiliateUrl !== null;
 ---
 
 <!doctype html>
@@ -21,10 +24,10 @@ const tagSub1 = app.affiliateUrl !== null;
     <meta name="robots" content="noindex, nofollow" />
     <meta http-equiv="refresh" content={`1;url=${target}`} />
     <title>Redirecting to {app.name}…</title>
-    <script is:inline define:vars={{ target, tagSub1 }}>
+    <script is:inline define:vars={{ target, tagSource, SOURCE_PARAM }}>
       var url = new URL(target);
       var src = new URLSearchParams(location.search).get('src');
-      if (tagSub1 && src && !url.searchParams.has('sub1')) url.searchParams.set('sub1', src.slice(0, 100));
+      if (tagSource && src && !url.searchParams.has(SOURCE_PARAM)) url.searchParams.set(SOURCE_PARAM, src.slice(0, 100));
       location.replace(url.href);
     </script>
   </head>

@@ -37,7 +37,7 @@ const yn = (v: boolean | null) => (v === null ? '—' : v ? '✓' : '✗');
             <td class="c">{yn(a.features.imageGen)}</td>
             <td>{NSFW_LABEL[a.nsfw]}</td>
             <td>
-              <a class="btn btn--sm" href={ctaHref(a)} rel={ctaRel(a)} target="_blank">Visit</a>
+              <a class="btn btn--sm" href={ctaHref(a, Astro.url.pathname)} rel={ctaRel(a)} target="_blank">Visit</a>
             </td>
           </tr>
         ))

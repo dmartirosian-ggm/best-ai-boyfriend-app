@@ -7,6 +7,7 @@ import type { App } from './types';
  * Raw research with sources and confidence notes: ./apps.research.json
  *
  * affiliateUrl: paste your tracking link once approved. While null, /go/{slug}/ falls back to the website.
+ * Clicks are tagged with sub1 = the page they came from (see src/pages/go/[slug].astro).
  */
 export const APPS: App[] = [
   {
@@ -233,7 +234,7 @@ export const APPS: App[] = [
     "website": "https://ourdream.ai",
     "developer": "Dream Studio LLC / Dream Studio USA, Inc. (sources differ)",
     "launched": "2025",
-    "affiliateUrl": null,
+    "affiliateUrl": "https://www.ourdreamersai13.com/BPSSZ87/3QQG7/",
     "hasAffiliate": true,
     "score": 8.6,
     "bestFor": "Images, video & LGBTQ+ options",

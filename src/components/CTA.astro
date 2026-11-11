@@ -7,6 +7,6 @@ const app = getApp(slug);
 const cls = ['btn', variant === 'ghost' && 'btn--ghost', size === 'sm' && 'btn--sm'].filter(Boolean).join(' ');
 ---
 
-<a class={cls} href={ctaHref(app)} rel={ctaRel(app)} target="_blank" data-app={app.slug}>
+<a class={cls} href={ctaHref(app, Astro.url.pathname)} rel={ctaRel(app)} target="_blank" data-app={app.slug}>
   {label ?? `Visit ${app.name}`} <span aria-hidden="true">→</span>
 </a>

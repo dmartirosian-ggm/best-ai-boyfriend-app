@@ -1,8 +1,9 @@
 ---
 /**
  * Affiliate redirect: /go/{slug}/ -> app.affiliateUrl (falls back to the app's website).
- * Static meta-refresh so it works on any host. If your host supports redirects
- * (Netlify _redirects, Vercel, Cloudflare), prefer real 302s there.
+ * The page a click came from arrives as ?src= and is forwarded to the network as sub1
+ * (Everflow-style sub IDs), so conversions can be attributed per page.
+ * Static meta-refresh so it works on any host.
  */
 import { APPS } from '~/data/apps';
 export function getStaticPaths() {
@@ -10,6 +11,7 @@ export function getStaticPaths() {
 }
 const { app } = Astro.props;
 const target = app.affiliateUrl ?? app.website;
+const tagSub1 = app.affiliateUrl !== null;
 ---
 
 <!doctype html>
@@ -17,10 +19,14 @@ const target = app.affiliateUrl ?? app.website;
   <head>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow" />
-    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <meta http-equiv="refresh" content={`1;url=${target}`} />
     <title>Redirecting to {app.name}…</title>
-    <link rel="canonical" href={target} />
-    <script is:inline define:vars={{ target }}>location.replace(target);</script>
+    <script is:inline define:vars={{ target, tagSub1 }}>
+      var url = new URL(target);
+      var src = new URLSearchParams(location.search).get('src');
+      if (tagSub1 && src && !url.searchParams.has('sub1')) url.searchParams.set('sub1', src.slice(0, 100));
+      location.replace(url.href);
+    </script>
   </head>
   <body>
     <p>Taking you to <a href={target} rel="sponsored nofollow">{app.name}</a>…</p>

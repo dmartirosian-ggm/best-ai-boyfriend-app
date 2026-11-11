@@ -13,9 +13,14 @@ export function getApps(slugs: string[]): App[] {
   return slugs.map(getApp);
 }
 
-/** Outbound link for CTAs. Affiliate apps go through /go/{slug}/ so links can be swapped in one place. */
-export function ctaHref(app: App): string {
-  return app.hasAffiliate ? `/go/${app.slug}/` : app.website;
+/**
+ * Outbound link for CTAs. Affiliate apps go through /go/{slug}/ so links can be swapped in one place.
+ * `fromPath` (the current page's pathname) is passed along as ?src= and forwarded to the network as sub1.
+ */
+export function ctaHref(app: App, fromPath?: string): string {
+  if (!app.hasAffiliate) return app.website;
+  const src = fromPath?.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'home';
+  return fromPath === undefined ? `/go/${app.slug}/` : `/go/${app.slug}/?src=${encodeURIComponent(src)}`;
 }
 
 export function ctaRel(app: App): string {

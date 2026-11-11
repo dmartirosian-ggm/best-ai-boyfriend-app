@@ -1356,4 +1356,73 @@ export const APPS: App[] = [
       "https://aiinsightsnews.net/?p=1465"
     ]
   },
+  {
+    "slug": "roger-ai",
+    "freeShort": "Yes (Roger Free)",
+    "name": "Roger (ChatRoger)",
+    "tagline": "An AI boyfriend app built for gay, bi and queer men",
+    "website": "https://chatroger.com",
+    "developer": "Life AI Technologies, LLC (per a third-party listing)",
+    "launched": null,
+    "affiliateUrl": null,
+    "hasAffiliate": false,
+    "score": 7.6,
+    "bestFor": "Gay, bi & queer men",
+    "review": true,
+    "platforms": [
+      "web"
+    ],
+    "freeTier": "Free tier (Roger Free) for browsing and chatting with companions; images and video clips use credits.",
+    "startingPrice": "From ~$7.50/mo (annual)",
+    "plans": [
+      {
+        "name": "Premium (monthly)",
+        "monthly": "$14.99/mo",
+        "notes": "Per one third-party review; confirm in the app"
+      },
+      {
+        "name": "Premium (annual)",
+        "monthly": "about $7.50/mo",
+        "annual": "$89.99/yr",
+        "notes": "Per third-party reviews"
+      },
+      {
+        "name": "Credits",
+        "monthly": "varies",
+        "notes": "Used for images and short video clips"
+      }
+    ],
+    "boyfriendMode": "Yes: every companion is male; the app is built for gay, bi and queer men",
+    "features": {
+      "voiceMessages": true,
+      "voiceCalls": true,
+      "imageGen": true,
+      "customCharacters": true,
+      "groupChat": null
+    },
+    "nsfw": "yes",
+    "memory": "Reviewers say memory and polish trail the category leaders (Nomi, Kindroid).",
+    "minAge": 18,
+    "privacy": "The site describes private, encrypted chats and deletion on request (self-reported). Operator listed by a third-party site as Life AI Technologies, LLC. No breach reports found.",
+    "controversies": null,
+    "pros": [
+      "Built specifically for gay, bi and queer men",
+      "Large library of male companions plus your own",
+      "Voice notes, audio calls and images",
+      "Free tier to try it"
+    ],
+    "cons": [
+      "Memory and polish behind Nomi and Kindroid",
+      "Images and clips cost credits",
+      "Web only",
+      "Newer app with few independent reviews"
+    ],
+    "verified": "2026-11-11",
+    "sources": [
+      "https://chatroger.com/",
+      "https://chatroger.com/companions",
+      "https://pippinclub.com/blog/chatroger/",
+      "https://companioncue.com/companions/chatroger/vs/dondi-ai/"
+    ]
+  },
 ];

@@ -9,12 +9,19 @@
  */
 import { APPS } from '~/data/apps';
 export function getStaticPaths() {
-  return APPS.filter((a) => a.hasAffiliate).map((app) => ({ params: { slug: app.slug }, props: { app } }));
+  const affiliates = APPS.filter((a) => a.hasAffiliate);
+  return [
+    ...affiliates.map((app) => ({ params: { slug: app.slug }, props: { app, url: app.affiliateUrl } })),
+    // /go/{slug}-nsfw/ -> adult lander, for apps that have one (see NSFW_PAGES in src/lib/apps.ts).
+    ...affiliates
+      .filter((a) => a.affiliateUrlNsfw)
+      .map((app) => ({ params: { slug: `${app.slug}-nsfw` }, props: { app, url: app.affiliateUrlNsfw ?? null } })),
+  ];
 }
-const { app } = Astro.props;
-const target = app.affiliateUrl ?? app.website;
+const { app, url } = Astro.props;
+const target = url ?? app.website;
 const SOURCE_PARAM = 'sub3';
-const tagSource = app.affiliateUrl !== null;
+const tagSource = url !== null;
 ---
 
 <!doctype html>

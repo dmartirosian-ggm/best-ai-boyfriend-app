@@ -19,6 +19,8 @@ export interface App {
 
   /** Affiliate tracking link. null = no program (or not approved yet) -> CTA goes to `website`. */
   affiliateUrl: string | null;
+  /** Optional adult-lander tracking link, used instead of affiliateUrl on pages listed in NSFW_PAGES (src/lib/apps.ts). */
+  affiliateUrlNsfw?: string | null;
   /** Whether a known affiliate program exists for this app. */
   hasAffiliate: boolean;
 

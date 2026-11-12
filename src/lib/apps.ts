@@ -19,9 +19,27 @@ export function getApps(slugs: string[]): App[] {
  */
 export function ctaHref(app: App, fromPath?: string): string {
   if (!app.hasAffiliate) return app.website;
+  const go = app.affiliateUrlNsfw && fromPath && NSFW_PAGES.has(fromPath) ? `${app.slug}-nsfw` : app.slug;
   const src = fromPath?.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'home';
-  return fromPath === undefined ? `/go/${app.slug}/` : `/go/${app.slug}/?src=${encodeURIComponent(src)}`;
+  return fromPath === undefined ? `/go/${go}/` : `/go/${go}/?src=${encodeURIComponent(src)}`;
 }
+
+/**
+ * Pages whose readers are looking for 18+ chat. CTAs here use an app's affiliateUrlNsfw (adult lander)
+ * when it has one; every other page uses the regular affiliateUrl.
+ */
+export const NSFW_PAGES = new Set([
+  '/nsfw-ai-boyfriend/',
+  '/candy-ai-alternatives/',
+  '/crushon-ai-alternatives/',
+  '/spicychat-alternatives/',
+  '/janitor-ai-alternatives/',
+  '/ourdream-ai-alternatives/',
+  '/reviews/spicychat/',
+  '/reviews/crushon-ai/',
+  '/reviews/janitor-ai/',
+  '/reviews/muah-ai/',
+]);
 
 export function ctaRel(app: App): string {
   return app.hasAffiliate ? 'sponsored nofollow noopener' : 'nofollow noopener';

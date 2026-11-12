@@ -8,6 +8,7 @@ import Callout from './Callout.astro';
 import ProsCons from './ProsCons.astro';
 import TopPicksStrip from './TopPicksStrip.astro';
 import PlanTable from './PlanTable.astro';
+import FeaturedPick from './FeaturedPick.astro';
 
 export const mdxComponents = {
   AppCard,
@@ -19,4 +20,5 @@ export const mdxComponents = {
   ProsCons,
   TopPicksStrip,
   PlanTable,
+  FeaturedPick,
 };

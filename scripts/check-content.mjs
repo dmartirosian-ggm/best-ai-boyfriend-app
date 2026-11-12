@@ -15,7 +15,7 @@ const ART = join(ROOT, 'src/content/articles');
 const appsSrc = readFileSync(join(ROOT, 'src/data/apps.ts'), 'utf8');
 const SLUGS = new Set([...appsSrc.matchAll(/"slug": "([^"]+)"/g)].map((m) => m[1]));
 const PLANNED = new Set(JSON.parse(readFileSync(join(ROOT, 'scripts/planned-urls.json'), 'utf8')));
-const COMPONENTS = new Set(['AppCard', 'CompareTable', 'ReviewSummary', 'VsTable', 'CTA', 'Callout', 'ProsCons', 'TopPicksStrip', 'PlanTable']);
+const COMPONENTS = new Set(['AppCard', 'CompareTable', 'ReviewSummary', 'VsTable', 'CTA', 'Callout', 'ProsCons', 'TopPicksStrip', 'PlanTable', 'FeaturedPick']);
 const TYPES = new Set(['home', 'listicle', 'review', 'review-support', 'vs', 'alternatives', 'guide', 'faq', 'page']);
 
 const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));

@@ -1,0 +1,55 @@
+---
+/**
+ * Clearly labeled sponsored/featured placement, separate from the editorial ranking.
+ * <FeaturedPick app="ourdream-ai" headline="…">markdown pitch</FeaturedPick>
+ */
+import { getApp, PLATFORM_LABEL } from '~/lib/apps';
+import AppMark from './AppMark.astro';
+import Score from './Score.astro';
+import CTA from './CTA.astro';
+
+interface Props { app: string; headline?: string; cta?: string }
+const { app: slug, headline, cta } = Astro.props;
+const app = getApp(slug);
+---
+
+<aside class="fp" aria-label={`Featured: ${app.name}`}>
+  <p class="tag">Featured partner</p>
+  <div class="row">
+    <AppMark app={app} size={64} />
+    <div class="t">
+      <p class="name">{headline ?? app.name}</p>
+      <p class="meta">
+        <Score score={app.score} /> · {app.startingPrice} · Free plan: {app.freeShort} · {app.platforms.map((p) => PLATFORM_LABEL[p]).join(', ')}
+      </p>
+    </div>
+  </div>
+  <div class="body"><slot /></div>
+  <div class="cta">
+    <CTA app={app.slug} label={cta ?? `Try ${app.name} free`} />
+    {app.review && <a href={`/reviews/${app.slug}/`}>Read our review</a>}
+  </div>
+  <p class="fine">Featured placements are paid partnerships and are separate from our editorial ranking.</p>
+</aside>
+
+<style>
+  .fp {
+    position: relative; margin: 1.8em 0; padding: 26px 24px 18px; border-radius: calc(var(--radius) + 4px);
+    background: linear-gradient(135deg, var(--accent-soft), var(--card) 70%);
+    border: 2px solid var(--accent); box-shadow: var(--shadow);
+  }
+  .tag {
+    position: absolute; top: -13px; left: 20px; margin: 0; padding: 2px 12px; border-radius: 999px;
+    background: var(--accent); color: var(--accent-ink); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .row { display: flex; align-items: center; gap: 14px; }
+  .t p { margin: 0; }
+  .name { font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; line-height: 1.2; color: var(--ink); }
+  .meta { font-size: 0.88rem; color: var(--muted); margin-top: 4px !important; }
+  .body { margin: 12px 0 0; color: var(--ink-2); }
+  .body :global(p) { margin: 0.4em 0; }
+  .cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 16px; }
+  .cta a:not(.btn) { font-weight: 600; font-size: 0.93rem; }
+  .fine { margin: 14px 0 0; font-size: 0.75rem; color: var(--muted); }
+  @media (max-width: 640px) { .fp { padding: 24px 16px 16px; } }
+</style>

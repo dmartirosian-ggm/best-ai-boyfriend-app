@@ -9,7 +9,11 @@ let h = 0;
 for (const ch of app.slug) h = (h * 31 + ch.charCodeAt(0)) % 360;
 ---
 
-<span class="mark" style={`--h:${h};--s:${size}px`} aria-hidden="true">{letters}</span>
+{app.logo ? (
+  <img class="mark mark--img" src={app.logo} alt="" width={size} height={size} style={`--s:${size}px`} />
+) : (
+  <span class="mark" style={`--h:${h};--s:${size}px`} aria-hidden="true">{letters}</span>
+)}
 
 <style>
   .mark {
@@ -19,4 +23,5 @@ for (const ch of app.slug) h = (h * 31 + ch.charCodeAt(0)) % 360;
     color: #fff; font-family: var(--font-display); font-weight: 700; font-size: calc(var(--s) * 0.38);
     letter-spacing: -0.02em;
   }
+  .mark--img { background: #e6ecef; padding: calc(var(--s) * 0.08); object-fit: contain; }
 </style>

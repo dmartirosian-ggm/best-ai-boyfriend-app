@@ -1428,4 +1428,68 @@ export const APPS: App[] = [
       "https://companioncue.com/companions/chatroger/vs/dondi-ai/"
     ]
   },
+
+  {
+    "slug": "beau",
+    "freeShort": "Yes, 25 messages a day",
+    "name": "Beau",
+    "tagline": "A safe-for-work AI boyfriend who sends photos from his day (our own app)",
+    "website": "https://beauaiboyfriend.com",
+    "developer": "The team behind this site",
+    "launched": "2026",
+    "affiliateUrl": null,
+    "hasAffiliate": false,
+    "ownedByUs": true,
+    "logo": "/beau/mark.svg",
+    "score": 7.5,
+    "bestFor": "Safe-for-work romance with photos",
+    "review": false,
+    "platforms": [
+      "web"
+    ],
+    "freeTier": "One companion, 25 messages and 2 photos a day, no ads and no card. Daily limits reset at midnight UTC.",
+    "startingPrice": "$9.99/mo",
+    "plans": [
+      {
+        "name": "Free",
+        "monthly": "$0",
+        "notes": "1 companion, 25 messages and 2 photos a day"
+      },
+      {
+        "name": "Premium",
+        "monthly": "$9.99/mo",
+        "notes": "400 messages and 25 photos a day, up to 5 companions"
+      }
+    ],
+    "boyfriendMode": "Yes: built only for AI boyfriends. You design him (looks, personality, backstory).",
+    "features": {
+      "voiceMessages": false,
+      "voiceCalls": false,
+      "imageGen": true,
+      "customCharacters": true,
+      "groupChat": false
+    },
+    "nsfw": "no",
+    "memory": "Keeps running notes about your life (friends, work, plans) and brings them up later, on every plan.",
+    "minAge": 18,
+    "privacy": "Chats are private to your account; companions, chats and the whole account can be deleted at any time. Messages are processed by AI providers to generate replies and photos.",
+    "controversies": null,
+    "pros": [
+      "Built only for an AI boyfriend",
+      "Realistic photos with the same face every time",
+      "Always safe for work, no ads",
+      "Simple pricing: free or $9.99/mo"
+    ],
+    "cons": [
+      "No voice messages or calls yet",
+      "Browser only, no store app",
+      "Free plan capped at 25 messages a day",
+      "New app with no community library"
+    ],
+    "verified": "2026-11-12",
+    "sources": [
+      "https://beauaiboyfriend.com/",
+      "https://beauaiboyfriend.com/free-ai-boyfriend"
+    ]
+  },
 ];

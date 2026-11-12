@@ -1,0 +1,104 @@
+---
+/**
+ * Promo for Beau, our own AI boyfriend app. Always carries a short "made by the team behind this site" note.
+ * variant="card": graphical banner with polaroids (used near the end of articles).
+ * variant="slim": one-line strip (used near the top of alternatives and listicle pages).
+ * Renders nothing on pages where Beau doesn't fit (see src/lib/beau.ts).
+ */
+import { beauHref, beauPlacement } from '~/lib/beau';
+
+interface Props {
+  variant?: 'card' | 'slim';
+  /** Override the page-matched headline. */
+  pitch?: string;
+}
+const { variant = 'card', pitch } = Astro.props;
+const placement = beauPlacement(Astro.url.pathname);
+const href = placement ? beauHref(placement.target) : '';
+const headline = pitch ?? placement?.pitch ?? '';
+---
+
+{
+  placement && variant === 'card' && (
+    <aside class="beau-card" aria-label="Beau, our own AI boyfriend app">
+      <div class="pics" aria-hidden="true">
+        <figure class="pol p1">
+          <span class="tape" />
+          <img src="/beau/pancakes.webp" alt="" width="140" height="160" loading="lazy" decoding="async" />
+          <figcaption>made you pancakes</figcaption>
+        </figure>
+        <figure class="pol p2">
+          <span class="tape" />
+          <img src="/beau/rain.webp" alt="" width="130" height="150" loading="lazy" decoding="async" />
+          <figcaption>rained on, again</figcaption>
+        </figure>
+      </div>
+      <div class="copy">
+        <p class="label">From our team</p>
+        <p class="head">{headline}</p>
+        <p class="sub">
+          Beau is an AI boyfriend you design yourself. He texts back, remembers what you tell him and sends photos from his day. Always safe for
+          work, free to start.
+        </p>
+        <a class="go" href={href} rel="noopener" target="_blank" data-app="beau">
+          Try Beau free <span aria-hidden="true">→</span>
+        </a>
+        <p class="own">Beau is made by the team behind this site. <a href="/affiliate-disclosure/#our-own-app">Disclosure</a>.</p>
+      </div>
+    </aside>
+  )
+}
+
+{
+  placement && variant === 'slim' && (
+    <aside class="beau-slim" aria-label="Beau, our own AI boyfriend app">
+      <img src="/beau/portrait.webp" alt="" width="40" height="46" loading="lazy" decoding="async" />
+      <p>
+        <strong>{headline}</strong> Try <a href={href} rel="noopener" target="_blank" data-app="beau">Beau</a>, the safe-for-work AI boyfriend
+        we make. <span class="own">(Our own app.)</span>
+      </p>
+    </aside>
+  )
+}
+
+<style>
+  .beau-card {
+    --cherry: #d2283f;
+    --fridge: #e6ecef;
+    display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: center;
+    margin: 40px 0; padding: 26px 28px; border-radius: calc(var(--radius) + 4px);
+    background: var(--fridge); color: #22202a; border: 1px solid #d7dfe3;
+  }
+  .pics { position: relative; height: 210px; }
+  .pol { position: absolute; margin: 0; background: #fff; padding: 7px 7px 0; box-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 10px 22px rgb(40 50 60 / 0.16); }
+  .pol img { display: block; object-fit: cover; }
+  .pol figcaption { font-family: var(--font-display); font-style: italic; font-size: 13px; padding: 4px 2px 7px; color: #2d2a33; }
+  .p1 { left: 0; top: 6px; rotate: -6deg; }
+  .p1 img { width: 118px; height: 132px; }
+  .p2 { left: 82px; top: 30px; rotate: 5deg; }
+  .p2 img { width: 110px; height: 124px; }
+  .tape { position: absolute; top: -8px; left: calc(50% - 28px); width: 56px; height: 16px; background: #f1dc9a; opacity: 0.9; rotate: -4deg; }
+  .label { margin: 0; font-size: 0.78rem; font-weight: 700; color: #5b6470; }
+  .head { margin: 4px 0 8px; font-family: var(--font-display); font-weight: 700; font-size: 1.45rem; line-height: 1.15; color: #22202a; }
+  .sub { margin: 0 0 16px; color: #3b3944; font-size: 0.97rem; max-width: 46ch; }
+  .go {
+    display: inline-flex; gap: 8px; align-items: center; padding: 11px 20px; border-radius: 999px;
+    background: var(--cherry); color: #fff; font-weight: 700; text-decoration: none;
+  }
+  .go:hover { background: #b01d33; }
+  .own { margin: 12px 0 0; font-size: 0.78rem; color: #5b6470; }
+  .own a { color: #5b6470; }
+  @media (max-width: 640px) {
+    .beau-card { grid-template-columns: 1fr; padding: 22px 18px; gap: 8px; }
+    .pics { height: 190px; width: 220px; margin: 0 auto; }
+  }
+
+  .beau-slim {
+    display: flex; gap: 12px; align-items: center; margin: 18px 0; padding: 10px 14px;
+    border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); font-size: 0.93rem;
+  }
+  .beau-slim img { flex: none; width: 40px; height: 46px; object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 6px rgb(0 0 0 / 0.15); rotate: -4deg; }
+  .beau-slim p { margin: 0; color: var(--ink-2); }
+  .beau-slim strong { color: var(--ink); }
+  .beau-slim .own { color: var(--muted); font-size: 0.85em; }
+</style>

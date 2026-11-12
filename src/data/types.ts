@@ -27,6 +27,10 @@ export interface App {
   sourceParam?: string | null;
   /** Whether a known affiliate program exists for this app. */
   hasAffiliate: boolean;
+  /** Our own product (Beau). Always disclosed wherever it appears; links are normal (followed) links to its site. */
+  ownedByUs?: boolean;
+  /** Optional logo image (only for apps whose logo we own). Others get a monogram tile. */
+  logo?: string;
 
   /** Editorial score out of 10. */
   score: number;

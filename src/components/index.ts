@@ -9,8 +9,10 @@ import ProsCons from './ProsCons.astro';
 import TopPicksStrip from './TopPicksStrip.astro';
 import PlanTable from './PlanTable.astro';
 import FeaturedPick from './FeaturedPick.astro';
+import BeauBanner from './BeauBanner.astro';
 
 export const mdxComponents = {
+  BeauBanner,
   AppCard,
   CompareTable,
   ReviewSummary,

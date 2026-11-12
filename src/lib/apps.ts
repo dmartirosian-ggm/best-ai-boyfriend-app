@@ -1,5 +1,6 @@
 import { APPS } from '~/data/apps';
 import type { App } from '~/data/types';
+import { beauHref, beauPlacement } from './beau';
 
 const bySlug = new Map(APPS.map((a) => [a.slug, a]));
 
@@ -18,6 +19,7 @@ export function getApps(slugs: string[]): App[] {
  * `fromPath` (the current page's pathname) is passed along as ?src= and forwarded to the network as sub3.
  */
 export function ctaHref(app: App, fromPath?: string): string {
+  if (app.ownedByUs) return beauHref(beauPlacement(fromPath ?? '/')?.target ?? '/');
   if (!app.hasAffiliate) return app.website;
   const go = app.affiliateUrlNsfw && fromPath && NSFW_PAGES.has(fromPath) ? `${app.slug}-nsfw` : app.slug;
   const src = fromPath?.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'home';
@@ -42,6 +44,7 @@ export const NSFW_PAGES = new Set([
 ]);
 
 export function ctaRel(app: App): string {
+  if (app.ownedByUs) return 'noopener';
   return app.hasAffiliate ? 'sponsored nofollow noopener' : 'nofollow noopener';
 }
 

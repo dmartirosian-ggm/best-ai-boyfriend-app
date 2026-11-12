@@ -5,6 +5,7 @@ import FAQ from '~/components/FAQ.astro';
 import { mdxComponents } from '~/components';
 import { SITE } from '~/config';
 import { getApp } from '~/lib/apps';
+import BeauBanner from '~/components/BeauBanner.astro';
 import { articleHref, getArticles, TYPE_HUB, TYPE_LABEL, type Article } from '~/lib/articles';
 
 interface Props { entry: Article }
@@ -117,7 +118,9 @@ if (crumbs.length > 1) {
   <div class:list={['wrap', 'layout', (isPage || toc.length < 3) && 'layout--single']}>
     <article class="prose">
       {!isPage && <p class="disclosure">{SITE.disclosure} <a href="/affiliate-disclosure/">Learn more</a>.</p>}
+      {(d.type === 'alternatives' || d.type === 'listicle') && <BeauBanner variant="slim" />}
       <Content components={mdxComponents} />
+      {!isPage && <BeauBanner />}
       <FAQ faqs={d.faqs} />
       {
         relatedLinks.length > 0 && (

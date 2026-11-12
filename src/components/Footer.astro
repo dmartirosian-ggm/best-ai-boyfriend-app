@@ -42,6 +42,7 @@ const cols = [
       ['/affiliate-disclosure/', 'Affiliate disclosure'],
       ['/privacy/', 'Privacy policy'],
       ['/faq/', 'FAQ'],
+      [`mailto:${SITE.email}`, 'Contact us'],
       ['/guides/', 'All guides'],
     ],
   },
@@ -73,6 +74,7 @@ const cols = [
         988).
       </p>
       <p>{SITE.disclosure}</p>
+      <p>Contact: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
       <p>© {year} {SITE.name}. Independent and not affiliated with any app reviewed. Product names are trademarks of their owners.</p>
     </div>
   </div>

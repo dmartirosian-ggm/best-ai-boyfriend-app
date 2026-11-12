@@ -10,6 +10,7 @@ export const SITE = {
   disclosure:
     'We may earn a commission if you sign up through links on this page. It never changes our rankings: apps without affiliate programs are reviewed and ranked the same way.',
   locale: 'en_US',
+  email: 'hello@bestaiboyfriendapp.com',
 };
 
 export const NAV = [

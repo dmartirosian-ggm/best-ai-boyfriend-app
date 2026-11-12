@@ -21,6 +21,8 @@ export interface App {
   affiliateUrl: string | null;
   /** Optional adult-lander tracking link, used instead of affiliateUrl on pages listed in NSFW_PAGES (src/lib/apps.ts). */
   affiliateUrlNsfw?: string | null;
+  /** Query params forced onto every outbound affiliate click (e.g. OurDream: sub1=male so the Create lander always starts on a male companion). */
+  affiliateParams?: Record<string, string>;
   /** Whether a known affiliate program exists for this app. */
   hasAffiliate: boolean;
 

@@ -22,6 +22,7 @@ const { app, url } = Astro.props;
 const target = url ?? app.website;
 const SOURCE_PARAM = 'sub3';
 const tagSource = url !== null;
+const forced = url !== null ? (app.affiliateParams ?? {}) : {};
 ---
 
 <!doctype html>
@@ -31,10 +32,11 @@ const tagSource = url !== null;
     <meta name="robots" content="noindex, nofollow" />
     <meta http-equiv="refresh" content={`1;url=${target}`} />
     <title>Redirecting to {app.name}…</title>
-    <script is:inline define:vars={{ target, tagSource, SOURCE_PARAM }}>
+    <script is:inline define:vars={{ target, tagSource, SOURCE_PARAM, forced }}>
       var url = new URL(target);
       var src = new URLSearchParams(location.search).get('src');
       if (tagSource && src && !url.searchParams.has(SOURCE_PARAM)) url.searchParams.set(SOURCE_PARAM, src.slice(0, 100));
+      for (var k in forced) url.searchParams.set(k, forced[k]);
       location.replace(url.href);
     </script>
   </head>

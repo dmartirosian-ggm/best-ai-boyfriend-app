@@ -20,8 +20,8 @@ export function getStaticPaths() {
 }
 const { app, url } = Astro.props;
 const target = url ?? app.website;
-const SOURCE_PARAM = 'sub3';
-const tagSource = url !== null;
+const SOURCE_PARAM = app.sourceParam === undefined ? 'sub3' : app.sourceParam;
+const tagSource = url !== null && SOURCE_PARAM !== null;
 const forced = url !== null ? (app.affiliateParams ?? {}) : {};
 ---
 

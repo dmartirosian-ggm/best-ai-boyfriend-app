@@ -23,6 +23,8 @@ export interface App {
   affiliateUrlNsfw?: string | null;
   /** Query params forced onto every outbound affiliate click (e.g. OurDream: sub1=male so the Create lander always starts on a male companion). */
   affiliateParams?: Record<string, string>;
+  /** Query param the network reads as a sub ID for the source page (default "sub3", Everflow). null = network has no sub IDs (e.g. Rewardful ?via= links), so none is added. */
+  sourceParam?: string | null;
   /** Whether a known affiliate program exists for this app. */
   hasAffiliate: boolean;
 

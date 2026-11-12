@@ -1,0 +1,51 @@
+---
+/**
+ * 1) Paid-traffic tagging: a visitor who lands from an ad (gclid/gbraid/wbraid or utm_medium=cpc) is
+ *    remembered for the session, and their outbound /go/ links get src=ppc_<page> instead of <page>,
+ *    so Everflow's sub3 report separates paid from organic conversions.
+ * 2) Optional Google Ads conversion: set PUBLIC_GOOGLE_ADS_ID (AW-XXXXXXXXX) and
+ *    PUBLIC_GOOGLE_ADS_CLICK_LABEL at build time to load the Google tag and record each
+ *    affiliate click (/go/ link) as a conversion.
+ */
+const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID as string | undefined;
+const clickLabel = import.meta.env.PUBLIC_GOOGLE_ADS_CLICK_LABEL as string | undefined;
+---
+
+{
+  adsId && (
+    <>
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${adsId}`} />
+      <script is:inline define:vars={{ adsId }}>
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', adsId);
+      </script>
+    </>
+  )
+}
+<script is:inline define:vars={{ adsId: adsId ?? null, clickLabel: clickLabel ?? null }}>
+  (function () {
+    var KEY = 'baib_paid';
+    var paid = false;
+    try {
+      var q = new URLSearchParams(location.search);
+      if (q.has('gclid') || q.has('gbraid') || q.has('wbraid') || q.get('utm_medium') === 'cpc') sessionStorage.setItem(KEY, '1');
+      paid = sessionStorage.getItem(KEY) === '1';
+    } catch (e) {}
+
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href^="/go/"]') : null;
+      if (!a) return;
+      if (paid) {
+        var u = new URL(a.getAttribute('href'), location.origin);
+        var src = u.searchParams.get('src') || 'unknown';
+        if (src.indexOf('ppc_') !== 0) u.searchParams.set('src', 'ppc_' + src);
+        a.setAttribute('href', u.pathname + u.search);
+      }
+      if (adsId && clickLabel && window.gtag) {
+        window.gtag('event', 'conversion', { send_to: adsId + '/' + clickLabel, transport_type: 'beacon' });
+      }
+    }, true);
+  })();
+</script>

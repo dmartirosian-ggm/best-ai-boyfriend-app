@@ -34,8 +34,16 @@ const forced = url !== null ? (app.affiliateParams ?? {}) : {};
     <title>Redirecting to {app.name}…</title>
     <script is:inline define:vars={{ target, tagSource, SOURCE_PARAM, forced }}>
       var url = new URL(target);
-      var src = new URLSearchParams(location.search).get('src');
+      var q = new URLSearchParams(location.search);
+      var src = q.get('src');
       if (tagSource && src && !url.searchParams.has(SOURCE_PARAM)) url.searchParams.set(SOURCE_PARAM, src.slice(0, 100));
+      // Everflow-style networks: ad click ID in sub4 (for offline conversion import), split-test variant in sub5.
+      var cid = q.get('cid');
+      var split = q.get('split');
+      if (tagSource && SOURCE_PARAM === 'sub3') {
+        if (cid && !url.searchParams.has('sub4')) url.searchParams.set('sub4', cid.slice(0, 200));
+        if (split && !url.searchParams.has('sub5')) url.searchParams.set('sub5', split.slice(0, 20));
+      }
       for (var k in forced) url.searchParams.set(k, forced[k]);
       location.replace(url.href);
     </script>

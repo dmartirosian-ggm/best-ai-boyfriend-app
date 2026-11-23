@@ -12,9 +12,11 @@ interface Props {
   noindex?: boolean;
   /** JSON-LD objects to embed. */
   schema?: Record<string, unknown>[];
+  /** Ad landing page: no site header or navigation, minimal footer. */
+  bare?: boolean;
 }
 
-const { title, description, ogType = 'website', noindex = false, schema = [] } = Astro.props;
+const { title, description, ogType = 'website', noindex = false, schema = [], bare = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
 ---
@@ -48,10 +50,10 @@ const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <Header />
+    {bare ? <slot name="bare-header" /> : <Header />}
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    {bare ? <slot name="bare-footer" /> : <Footer />}
   </body>
 </html>

@@ -29,7 +29,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) => !page.includes('/go/'),
+      filter: (page) => !page.includes('/go/') && !page.includes('/top-picks/'),
       xslURL: '/sitemap.xsl', // human-readable view in browsers
       serialize(item) {
         const updated = lastmod.get(new URL(item.url).pathname);

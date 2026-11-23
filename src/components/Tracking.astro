@@ -3,6 +3,9 @@
  * 1) Paid-traffic tagging: a visitor who lands from an ad (gclid/gbraid/wbraid or utm_medium=cpc) is
  *    remembered for the session, and their outbound /go/ links get src=ppc_<page> instead of <page>,
  *    so Everflow's sub3 report separates paid from organic conversions.
+ *    The ad click ID (gclid, gbraid, wbraid or msclkid) is kept for 30 days and added to /go/ links as cid=,
+ *    so /go/ can pass it to the affiliate network (sub4) for offline conversion import later.
+ *    A split-test variant (bab_split, set by landing pages) is added as split= and sent as sub5.
  * 2) Optional Google Ads conversion: set PUBLIC_GOOGLE_ADS_ID (AW-XXXXXXXXX) and
  *    PUBLIC_GOOGLE_ADS_CLICK_LABEL at build time to load the Google tag and record each
  *    affiliate click (/go/ link) as a conversion.
@@ -27,22 +30,32 @@ const clickLabel = import.meta.env.PUBLIC_GOOGLE_ADS_CLICK_LABEL as string | und
 <script is:inline define:vars={{ adsId: adsId ?? null, clickLabel: clickLabel ?? null }}>
   (function () {
     var KEY = 'baib_paid';
+    var CID = 'baib_cid';
     var paid = false;
+    var cid = '';
+    var split = '';
     try {
       var q = new URLSearchParams(location.search);
-      if (q.has('gclid') || q.has('gbraid') || q.has('wbraid') || q.get('utm_medium') === 'cpc') sessionStorage.setItem(KEY, '1');
+      if (q.has('gclid') || q.has('gbraid') || q.has('wbraid') || q.has('msclkid') || q.get('utm_medium') === 'cpc') sessionStorage.setItem(KEY, '1');
       paid = sessionStorage.getItem(KEY) === '1';
+      var id = q.get('gclid') || q.get('gbraid') || q.get('wbraid') || q.get('msclkid');
+      if (id) localStorage.setItem(CID, JSON.stringify({ id: id.slice(0, 200), t: Date.now() }));
+      var saved = JSON.parse(localStorage.getItem(CID) || 'null');
+      if (saved && Date.now() - saved.t < 30 * 864e5) cid = saved.id;
     } catch (e) {}
 
     document.addEventListener('click', function (e) {
       var a = e.target && e.target.closest ? e.target.closest('a[href^="/go/"]') : null;
       if (!a) return;
+      var u = new URL(a.getAttribute('href'), location.origin);
       if (paid) {
-        var u = new URL(a.getAttribute('href'), location.origin);
         var src = u.searchParams.get('src') || 'unknown';
         if (src.indexOf('ppc_') !== 0) u.searchParams.set('src', 'ppc_' + src);
-        a.setAttribute('href', u.pathname + u.search);
       }
+      if (cid) u.searchParams.set('cid', cid);
+      try { split = localStorage.getItem('bab_split') || ''; } catch (e) {}
+      if (split) u.searchParams.set('split', split);
+      a.setAttribute('href', u.pathname + u.search);
       if (adsId && clickLabel && window.gtag) {
         window.gtag('event', 'conversion', { send_to: adsId + '/' + clickLabel, transport_type: 'beacon' });
       }

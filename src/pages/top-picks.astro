@@ -3,6 +3,7 @@
  * Paid-traffic landing page (Google Ads). Not in the sitemap and noindex.
  * No site header or navigation: the logo is plain text, and the only links out are the app CTAs
  * plus the disclosure and privacy links in the footer.
+ * Scores and order here are this page's own ranking (OurDream first); article pages use src/data/apps.ts.
  */
 import Base from '~/layouts/Base.astro';
 import { getApps, ctaHref, ctaRel } from '~/lib/apps';
@@ -11,40 +12,79 @@ import { SITE } from '~/config';
 const PAGE = '/top-picks/';
 const UPDATED = 'November 2026';
 
-/** Per-card copy for this page; facts come from src/data/apps.ts. */
-const COPY: Record<string, { badge?: string; highlights: string[]; downside: string; cta: string }> = {
-  'nomi-ai': {
-    badge: 'Our top pick',
-    highlights: ['Remembers your history weeks later', 'Voice calls and selfies from him', 'Annual plan works out to about $8/mo'],
-    downside: 'The free plan runs out fast.',
-    cta: 'Visit Nomi',
-  },
-  'ourdream-ai': {
-    badge: 'Best for photos and video',
-    highlights: ['About 50 free messages a day', 'Unlimited chat on Premium', 'Generates pictures and short videos of him'],
-    downside: 'Photos and video use coins, even on Premium.',
+interface Pick {
+  slug: string;
+  score: number;
+  badge: string;
+  bestFor: string;
+  headline: string;
+  highlights: string[];
+  cta: string;
+}
+
+const PICKS: Pick[] = [
+  {
+    slug: 'ourdream-ai',
+    score: 9.4,
+    badge: 'Best in November',
+    bestFor: 'Photos, video and custom boyfriends',
+    headline: 'Design your dream boyfriend, then see him in photos and video',
+    highlights: ['About 50 free messages a day', 'Unlimited chat on Premium', 'Generates pictures and short videos of him', 'Male and LGBTQ+ companions'],
     cta: 'Visit OurDream',
   },
-  beau: {
+  {
+    slug: 'nomi-ai',
+    score: 9.1,
+    badge: 'Best memory',
+    bestFor: 'A long-term relationship',
+    headline: 'The boyfriend who remembers everything you tell him',
+    highlights: ['Remembers your history weeks later', 'Voice calls and selfies from him', 'Group chats with several companions', 'Web, iPhone and Android'],
+    cta: 'Visit Nomi',
+  },
+  {
+    slug: 'beau',
+    score: 7.5,
     badge: 'Our own app',
-    highlights: ['Built only for an AI boyfriend', 'Photos from his day, same face every time', 'Always safe for work, no ads'],
-    downside: 'No voice yet, and it runs in the browser only.',
+    bestFor: 'Safe-for-work romance',
+    headline: 'A sweet boyfriend who texts back and sends photos from his day',
+    highlights: ['Built only for an AI boyfriend', 'Photos from his day, same face every time', 'Always safe for work, no ads', 'Free to start, no card'],
     cta: 'Try Beau free',
   },
-};
+];
 
-const apps = getApps(['nomi-ai', 'ourdream-ai', 'beau']).map((app) => ({
-  app,
-  copy: COPY[app.slug],
-  href: ctaHref(app, PAGE),
-  rel: ctaRel(app),
-}));
+const apps = getApps(PICKS.map((p) => p.slug));
+const picks = PICKS.map((p, i) => ({ ...p, app: apps[i], href: ctaHref(apps[i], PAGE), rel: ctaRel(apps[i]) }));
+const top = picks[0];
 const stars = (score: number) => Math.round((score / 10) * 5 * 2) / 2;
+const starClass = (n: number, s: number) => (n <= s ? 'on' : n - 0.5 === s ? 'half' : '');
+
+const FAQ = [
+  {
+    q: 'How realistic is an AI boyfriend?',
+    a: 'The best apps write like a real partner: they follow up on things you said days ago, have their own personality and can send photos. They are still AI, not people, and every app on this page says so.',
+  },
+  {
+    q: 'Can I design my own boyfriend?',
+    a: 'Yes. All three apps let you choose his look and personality. OurDream goes furthest on appearance, Nomi on personality and memory, and Beau lets you write his backstory.',
+  },
+  {
+    q: 'Can I have more than one AI boyfriend?',
+    a: 'Yes. Paid plans on all three apps let you keep several companions, and Nomi also has group chats where they talk together.',
+  },
+  {
+    q: 'Are my conversations private?',
+    a: 'Your chats are tied to your account and not shown to other users. Messages are processed by the app to write replies, so avoid sharing passwords or financial details, and check each app’s privacy policy.',
+  },
+  {
+    q: 'Do I need to pay?',
+    a: 'No. Each app here has a free plan with a daily message limit. Paying removes most limits and adds more photos, voice or video.',
+  },
+];
 ---
 
 <Base
   title="Best AI Boyfriend Apps, Ranked"
-  description="We tested the most popular AI boyfriend apps for memory, photos, price and free plans. Here are the ones worth trying."
+  description="The top AI boyfriend apps for memory, photos and free chat, ranked."
   noindex
   bare
 >
@@ -52,80 +92,156 @@ const stars = (score: number) => Math.round((score / 10) * 5 * 2) / 2;
     <div class="wrap lp-bar">
       <span class="lp-logo" aria-label={SITE.name}>
         <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M16 28s-11-6.6-11-14.2C5 9.5 8.2 6 12.2 6c1.6 0 3 .7 3.8 1.9C16.8 6.7 18.2 6 19.8 6 23.8 6 27 9.5 27 13.8 27 21.4 16 28 16 28z" fill="var(--accent)"></path>
-          <circle cx="12.5" cy="14" r="1.6" fill="var(--paper)"></circle>
-          <circle cx="19.5" cy="14" r="1.6" fill="var(--paper)"></circle>
+          <path d="M16 28s-11-6.6-11-14.2C5 9.5 8.2 6 12.2 6c1.6 0 3 .7 3.8 1.9C16.8 6.7 18.2 6 19.8 6 23.8 6 27 9.5 27 13.8 27 21.4 16 28 16 28z" fill="#ff5a7e"></path>
+          <circle cx="12.5" cy="14" r="1.6" fill="#1c1219"></circle>
+          <circle cx="19.5" cy="14" r="1.6" fill="#1c1219"></circle>
         </svg>
         <span>Best<b>AI</b>Boyfriend</span>
       </span>
-      <span class="lp-ad">Advertising disclosure ↓</span>
     </div>
   </header>
 
-  <section class="wrap lp-hero">
-    <p class="lp-kicker">Updated {UPDATED}</p>
-    <h1>The best AI boyfriend apps, ranked</h1>
-    <p class="lp-lede">We compared the most popular AI boyfriend apps on memory, photos, price and how much you get for free. These three came out on top.</p>
-    <ul class="lp-checks" aria-label="How we ranked them">
-      <li>Remembers what you tell him</li>
-      <li>Free plan you can actually use</li>
-      <li>Photos and voice</li>
-      <li>Fair pricing</li>
-    </ul>
+  <section class="hero">
+    <img class="hero-img" src="/lp/hero.webp" alt="" width="1344" height="752" fetchpriority="high" />
+    <div class="wrap hero-copy">
+      <h1>Best AI Boyfriend Apps</h1>
+      <p>Ranked for memory, photos and how much you get for free.</p>
+    </div>
   </section>
 
-  <section class="wrap lp-list" aria-label="Ranked apps">
-    {
-      apps.map(({ app, copy, href, rel }, i) => (
-        <article class={`lp-card${i === 0 ? ' first' : ''}`}>
-          {copy.badge && <p class={`lp-badge${app.ownedByUs ? ' own' : ''}`}>{copy.badge}</p>}
-          <div class="lp-rank" aria-label={`Rank ${i + 1}`}>{i + 1}</div>
-          <div class="lp-id">
-            {app.logo ? (
-              <img class="lp-mark" src={app.logo} alt="" width="56" height="56" />
-            ) : (
-              <span class="lp-mark mono" aria-hidden="true">{app.name.slice(0, 1)}</span>
-            )}
-            <div>
-              <h2>{app.name}</h2>
-              <p class="lp-best">Best for: {app.bestFor}</p>
+  <div class="wrap">
+    <section class="top3" aria-label="Top 3">
+      <h2>Top 3 apps this month</h2>
+      <div class="top3-row">
+        {
+          picks.map((p, i) => (
+            <a class={`mini${i === 0 ? ' first' : ''}`} href={p.href} rel={p.rel} target="_blank" data-app={p.slug}>
+              {i === 0 && <span class="tag">🏆 {p.badge}</span>}
+              <span class="mini-name">
+                <span class="rank">{i + 1}</span>
+                {p.app.name}
+              </span>
+              <span class="mini-score">
+                <b>{p.score.toFixed(1)}</b>
+                <span class="stars" aria-hidden="true">
+                  {[1, 2, 3, 4, 5].map((n) => <span class={starClass(n, stars(p.score))}>★</span>)}
+                </span>
+              </span>
+              <span class="mini-go">Get started</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <div class="meta">
+      <span>✎ Updated for {UPDATED}</span>
+      <a href="#disclosure">Advertising disclosure: we receive fees from partners that can affect rankings</a>
+    </div>
+
+    <section class="list" aria-label="Ranked apps">
+      {
+        picks.map((p, i) => (
+          <article class={`card${i === 0 ? ' first' : ''}${p.app.ownedByUs ? ' own' : ''}`}>
+            <p class="badge">{i === 0 ? '🏆 ' : ''}{p.badge}</p>
+            <div class="id">
+              <span class="rank big">{i + 1}</span>
+              {p.app.logo ? (
+                <img class="mark" src={p.app.logo} alt="" width="64" height="64" />
+              ) : (
+                <span class="mark mono" aria-hidden="true">{p.app.name.slice(0, 1)}</span>
+              )}
+              <div>
+                <h3>{p.app.name}</h3>
+                <p class="stars" aria-label={`${stars(p.score)} out of 5 stars`}>
+                  {[1, 2, 3, 4, 5].map((n) => <span class={starClass(n, stars(p.score))}>★</span>)}
+                </p>
+              </div>
             </div>
+            <div class="body">
+              <p class="headline">{p.headline}</p>
+              <ul>{p.highlights.map((h) => <li>{h}</li>)}</ul>
+            </div>
+            <div class="ring" style={`--p:${p.score * 10}`} aria-label={`Score ${p.score} out of 10`}>
+              <span>{p.score.toFixed(1)}</span>
+            </div>
+            <div class="act">
+              <p class="best">Best for: {p.bestFor}</p>
+              <a class="cta" href={p.href} rel={p.rel} target="_blank" data-app={p.slug}>{p.cta} →</a>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="intro">
+      <h2>Find a boyfriend who feels real</h2>
+      <p>
+        AI boyfriend apps have come a long way from basic chatbots. The good ones remember your day, have a personality of their own and can send
+        photos, voice notes or even short videos. You design him, and he talks to you like a partner would.
+      </p>
+      <p>
+        They are not all equal, though. Some forget what you said yesterday, some hide most features behind a paywall, and some are unclear about
+        your privacy. We score each app on the same things: memory, the free plan, photos and voice, and fair pricing.
+      </p>
+    </section>
+
+    <section class="offer" aria-label="Offer of the month">
+      <h2>Offer of the month</h2>
+      <div class="offer-card">
+        <div class="id">
+          <span class="mark mono" aria-hidden="true">{top.app.name.slice(0, 1)}</span>
+          <div>
+            <h3>{top.app.name}</h3>
+            <p class="stars" aria-hidden="true">{[1, 2, 3, 4, 5].map((n) => <span class={starClass(n, stars(top.score))}>★</span>)}</p>
           </div>
-          <ul class="lp-high">
-            {copy.highlights.map((h) => <li>{h}</li>)}
-            <li class="con">{copy.downside}</li>
+        </div>
+        <div class="body">
+          <p class="headline">Start free: about 50 messages a day, plus bonus coins for photos when you sign up</p>
+          <ul>
+            <li>Create your boyfriend in a few minutes</li>
+            <li>See him in photos and short videos</li>
+            <li>No card needed to start</li>
           </ul>
-          <div class="lp-score">
-            <p class="num">{app.score.toFixed(1)}</p>
-            <p class="stars" aria-label={`${stars(app.score)} out of 5 stars`}>
-              {[1, 2, 3, 4, 5].map((n) => (
-                <span class={n <= stars(app.score) ? 'on' : n - 0.5 === stars(app.score) ? 'half' : ''}>★</span>
-              ))}
-            </p>
-            <p class="price">Free plan · {app.startingPrice}</p>
-          </div>
-          <a class="lp-cta" href={href} rel={rel} target="_blank" data-app={app.slug}>
-            {copy.cta} <span aria-hidden="true">→</span>
-          </a>
-        </article>
-      ))
-    }
-  </section>
+        </div>
+        <div class="ring" style={`--p:${top.score * 10}`}><span>{top.score.toFixed(1)}</span></div>
+        <a class="cta" href={top.href} rel={top.rel} target="_blank" data-app={top.slug}>Claim free start →</a>
+      </div>
+    </section>
 
-  <section class="wrap lp-how">
-    <h2>How we pick</h2>
-    <p>
-      We score each app out of 10 on the same things: how well he remembers what you tell him, what the free plan really includes, photo and
-      voice features, and what it costs to keep going. Facts come from each app's own pricing and features plus independent reviews, and we
-      re-check them regularly.
-    </p>
-  </section>
+    <section class="lower">
+      <div class="faq">
+        <h2>Frequently asked questions</h2>
+        {
+          FAQ.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+      <aside class="side" aria-label="Top 3 apps">
+        <h2>Top 3 in 2026</h2>
+        {
+          picks.map((p, i) => (
+            <div class="side-row">
+              <span class="side-name"><span class="rank">{i + 1}</span>{p.app.name}</span>
+              <span class="side-score">{p.score.toFixed(1)} <span class="on">★</span></span>
+              <a class="cta small" href={p.href} rel={p.rel} target="_blank" data-app={p.slug}>Visit site</a>
+            </div>
+          ))
+        }
+      </aside>
+    </section>
+  </div>
 
-  <footer slot="bare-footer" class="lp-foot" id="disclosure">
+  <footer slot="bare-footer" class="foot" id="disclosure">
     <div class="wrap">
       <p>
         <strong>Advertising disclosure:</strong> this page is paid advertising. We earn a commission when you sign up through some links here, at
-        no cost to you, and that can affect which apps we show. Beau is made by the team behind this site. All apps are for adults 18+.
+        no cost to you, and that can affect which apps we show and how they rank. Beau is made by the team behind this site. All apps are for
+        adults 18+.
       </p>
       <p class="links">
         <a href="/affiliate-disclosure/" rel="nofollow">Full disclosure</a>
@@ -138,78 +254,133 @@ const stars = (score: number) => Math.round((score / 10) * 5 * 2) / 2;
 
 <script is:inline>
   // Split-test label for this lander (sent to the network as sub5). Change per variant.
-  try { localStorage.setItem('bab_split', 'tp1'); } catch (e) {}
+  try { localStorage.setItem('bab_split', 'tp2'); } catch (e) {}
 </script>
 
+<style is:global>
+  body:has(.hero) { background: #1c1219; }
+</style>
+
 <style>
-  .lp-top { border-bottom: 1px solid var(--line); background: var(--paper); }
-  .lp-bar { display: flex; align-items: center; justify-content: space-between; height: 56px; }
-  .lp-logo { display: flex; align-items: center; gap: 7px; font-family: var(--font-display); font-weight: 600; font-size: 1.12rem; color: var(--ink); cursor: default; }
-  .lp-logo b { color: var(--accent); }
-  .lp-ad { font-size: 0.78rem; color: var(--muted); }
+  .lp-top { background: #140c12; }
+  .lp-bar { display: flex; align-items: center; height: 58px; }
+  .lp-logo { display: flex; align-items: center; gap: 7px; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; color: #fff; cursor: default; }
+  .lp-logo b { color: #ff5a7e; }
 
-  .lp-hero { padding-top: 34px; padding-bottom: 18px; max-width: 852px; margin-left: auto; margin-right: auto; }
-  .lp-kicker { margin: 0 0 6px; font-size: 0.82rem; font-weight: 700; color: var(--good); text-transform: uppercase; letter-spacing: 0.06em; }
-  .lp-hero h1 { margin: 0 0 12px; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.08; }
-  .lp-lede { margin: 0 0 18px; color: var(--ink-2); font-size: 1.05rem; }
-  .lp-checks { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
-  .lp-checks li { padding: 5px 12px 5px 28px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-size: 0.88rem; position: relative; }
-  .lp-checks li::before { content: '✓'; position: absolute; left: 11px; color: var(--good); font-weight: 700; }
+  .hero { position: relative; height: 380px; overflow: hidden; background: #8e2338; }
+  .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 75% 20%; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(150 20 45 / 0.92) 0%, rgb(150 20 45 / 0.55) 45%, transparent 70%); }
+  .hero-copy { position: relative; z-index: 1; padding-top: 64px; color: #fff; }
+  .hero h1 { margin: 0 0 10px; color: #fff; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.02; max-width: 11ch; }
+  .hero p { margin: 0; font-size: 1.1rem; max-width: 30ch; opacity: 0.95; }
 
-  .lp-list { display: grid; gap: 18px; padding-top: 10px; padding-bottom: 30px; }
-  .lp-card {
-    position: relative; display: grid; align-items: center; gap: 18px 24px;
-    grid-template-columns: 44px minmax(200px, 1.1fr) 1.4fr 130px 170px;
-    padding: 24px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+  .top3 { position: relative; z-index: 2; margin-top: -110px; padding: 22px 24px 26px; background: #fff1f3; border-radius: 20px; box-shadow: 0 20px 40px -20px rgb(0 0 0 / 0.5); }
+  .top3 h2 { margin: 0 0 18px; font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); }
+  .top3-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .mini { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 10px 12px; align-items: center; padding: 18px 16px; background: #fff; border-radius: 14px; text-decoration: none; color: var(--ink); box-shadow: 0 2px 10px rgb(0 0 0 / 0.06); transition: transform 0.15s; }
+  .mini:hover { transform: translateY(-2px); }
+  .mini.first { outline: 2px solid #d1243f; }
+  .tag { position: absolute; top: -12px; left: 10px; padding: 3px 10px; border-radius: 999px; background: #6b5bd6; color: #fff; font-size: 0.75rem; font-weight: 600; }
+  .mini-name { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; }
+  .mini-score { text-align: right; }
+  .mini-score b { font-size: 1.15rem; margin-right: 4px; }
+  .mini-go { grid-column: 1 / -1; text-align: center; padding: 8px; border-radius: 8px; background: #d1243f; color: #fff; font-weight: 700; font-size: 0.9rem; text-decoration: underline; }
+
+  .rank { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #f3e3e6; font-size: 0.8rem; font-family: var(--font-body); font-weight: 700; flex: none; }
+  .first .rank { background: #d1243f; color: #fff; }
+
+  .stars { margin: 0; color: #d9cfd2; letter-spacing: 1px; font-size: 0.95rem; }
+  .stars .on, .on { color: #f2b01e; }
+  .stars .half { background: linear-gradient(90deg, #f2b01e 50%, #d9cfd2 50%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 18px 0 14px; color: #e9dde1; font-size: 0.9rem; }
+  .meta a { color: #b8a9ae; font-size: 0.8rem; }
+
+  .list { display: grid; gap: 22px; padding-bottom: 40px; }
+  .card, .offer-card {
+    position: relative; display: grid; align-items: center; gap: 18px 26px;
+    grid-template-columns: minmax(210px, 1fr) 1.6fr 100px 220px;
+    padding: 30px 26px 24px; background: #fff1f3; border-radius: 18px; color: var(--ink);
   }
-  .lp-card.first { border: 2px solid var(--accent); }
-  .lp-badge { position: absolute; top: -12px; left: 22px; margin: 0; padding: 3px 12px; border-radius: 999px; background: var(--accent); color: #fff; font-size: 0.78rem; font-weight: 700; }
-  .lp-badge.own { background: var(--ink-2); }
-  .lp-rank { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--paper-2); font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; }
-  .first .lp-rank { background: var(--accent); color: #fff; }
-  .lp-id { display: flex; align-items: center; gap: 14px; }
-  .lp-mark { width: 56px; height: 56px; border-radius: 14px; flex: none; object-fit: cover; }
-  .lp-mark.mono { display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; }
-  .lp-id h2 { margin: 0; font-size: 1.4rem; }
-  .lp-best { margin: 2px 0 0; font-size: 0.88rem; color: var(--muted); }
-  .lp-high { margin: 0; padding: 0; list-style: none; display: grid; gap: 5px; font-size: 0.94rem; }
-  .lp-high li { padding-left: 22px; position: relative; }
-  .lp-high li::before { content: '✓'; position: absolute; left: 0; color: var(--good); font-weight: 700; }
-  .lp-high li.con { color: var(--muted); }
-  .lp-high li.con::before { content: '–'; color: var(--bad); }
-  .lp-score { text-align: center; }
-  .lp-score p { margin: 0; }
-  .num { font-family: var(--font-display); font-weight: 700; font-size: 2.2rem; line-height: 1; }
-  .stars { color: #d9d0c9; letter-spacing: 1px; }
-  .stars .on { color: var(--gold); }
-  .stars .half { background: linear-gradient(90deg, var(--gold) 50%, #d9d0c9 50%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .price { font-size: 0.78rem; color: var(--muted); }
-  .lp-cta {
-    display: flex; justify-content: center; align-items: center; gap: 8px; padding: 14px 16px; border-radius: 12px;
-    background: var(--accent); color: #fff; font-weight: 700; text-decoration: none; text-align: center;
+  .card.first { border: 3px solid #e3203f; }
+  .badge { position: absolute; top: -13px; left: 24px; margin: 0; padding: 4px 14px; border-radius: 999px; background: #6b5bd6; color: #fff; font-size: 0.8rem; font-weight: 600; }
+  .card.own .badge { background: #4a4150; }
+  .id { display: flex; align-items: center; gap: 14px; }
+  .rank.big { width: 32px; height: 32px; font-size: 1rem; }
+  .mark { width: 64px; height: 64px; border-radius: 16px; flex: none; object-fit: cover; }
+  .mark.mono { display: grid; place-items: center; background: linear-gradient(135deg, #ff6f8f, #c81e45); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 1.9rem; }
+  .id h3 { margin: 0 0 2px; font-size: 1.5rem; }
+  .headline { margin: 0 0 8px; font-weight: 700; color: var(--ink); }
+  .body ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 0.95rem; color: var(--ink-2); }
+  .body li { position: relative; padding-left: 22px; }
+  .body li::before { content: '✓'; position: absolute; left: 0; color: #d1243f; font-weight: 700; }
+  .ring {
+    width: 86px; height: 86px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto;
+    background: conic-gradient(#e3203f calc(var(--p) * 1%), #f4cdd4 0);
   }
-  .lp-cta:hover { filter: brightness(0.92); }
+  .ring span { width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; background: #fff; font-family: var(--font-display); font-weight: 700; font-size: 1.7rem; color: #d1243f; }
+  .act { text-align: center; }
+  .best { margin: 0 0 10px; font-size: 0.8rem; color: var(--ink-2); }
+  .cta {
+    display: block; padding: 15px 16px; border-radius: 10px; background: #d1243f; color: #fff; text-align: center;
+    font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; box-shadow: 0 6px 14px -6px rgb(209 36 63 / 0.7);
+  }
+  .cta:hover { background: #b51c35; }
+  .cta.small { padding: 10px; font-size: 0.85rem; }
 
-  .lp-how { max-width: 852px; padding-top: 6px; padding-bottom: 36px; }
-  .lp-how h2 { font-size: 1.3rem; margin: 0 0 8px; }
-  .lp-how p { margin: 0; color: var(--ink-2); }
+  .intro { max-width: 900px; padding: 10px 0 40px; color: #e9dde1; }
+  .intro h2 { color: #fff; font-size: 1.8rem; margin: 0 0 14px; }
+  .intro p { margin: 0 0 14px; }
 
-  .lp-foot { border-top: 1px solid var(--line); background: var(--paper-2); padding-top: 22px; padding-bottom: 30px; font-size: 0.84rem; color: var(--ink-2); }
-  .lp-foot p { margin: 0 0 10px; max-width: 820px; }
-  .lp-foot .links { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); }
-  .lp-foot a { color: var(--ink-2); }
+  .offer { background: #e3203f; border-radius: 4px; padding: 40px 48px 48px; margin-bottom: 50px; }
+  .offer > h2 { margin: 0 0 24px; text-align: center; color: #fff; font-size: 2rem; }
+  .offer-card { background: #fff; grid-template-columns: minmax(190px, 1fr) 1.6fr 100px 220px; }
 
-  @media (max-width: 900px) {
-    .lp-card { grid-template-columns: 34px 1fr auto; padding: 26px 16px 18px; gap: 14px 12px; }
-    .lp-rank { width: 34px; height: 34px; font-size: 1.05rem; }
-    .lp-mark { display: none !important; }
-    .lp-id { grid-column: 2 / 3; }
-    .lp-id h2 { font-size: 1.25rem; }
-    .lp-score { max-width: 112px; }
-    .lp-best { font-size: 0.82rem; }
-    .lp-score { grid-column: 3; grid-row: 1; }
-    .lp-high { grid-column: 1 / -1; }
-    .lp-cta { grid-column: 1 / -1; }
-    .num { font-size: 1.8rem; }
+  .lower { display: grid; grid-template-columns: 1fr 340px; gap: 32px; align-items: start; padding-bottom: 60px; }
+  .faq h2, .side h2 { margin: 0 0 18px; }
+  .faq h2 { color: #fff; font-size: 1.8rem; }
+  details { margin-bottom: 12px; background: #f3ecff; border-radius: 10px; color: var(--ink); }
+  summary { list-style: none; cursor: pointer; padding: 18px 56px 18px 20px; font-weight: 600; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; position: absolute; right: 18px; top: 50%; translate: 0 -50%; width: 26px; height: 26px; border-radius: 50%; background: #e3203f; color: #fff; display: grid; place-items: center; font-weight: 700; }
+  details[open] summary::after { content: '–'; }
+  details p { margin: 0; padding: 0 20px 18px; color: var(--ink-2); }
+  .side { position: sticky; top: 16px; background: #fff; border: 3px solid #e3203f; border-radius: 18px; padding: 22px; color: var(--ink); }
+  .side h2 { font-family: var(--font-body); font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .side-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 12px 0; border-top: 1px solid #f1e4e7; }
+  .side-row:first-of-type { border-top: 0; }
+  .side-name { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
+  .side-score { padding: 4px 10px; border-radius: 8px; background: #f6f1f2; font-weight: 600; }
+  .side-row .cta { grid-column: 1 / -1; }
+
+  .foot { background: #321a20; color: #d8c8cd; padding-top: 26px; padding-bottom: 32px; font-size: 0.84rem; }
+  .foot p { margin: 0 0 10px; max-width: 860px; }
+  .foot .links { display: flex; gap: 16px; flex-wrap: wrap; }
+  .foot a { color: #fff; }
+
+  @media (max-width: 960px) {
+    .card, .offer-card { grid-template-columns: 1fr auto; padding: 28px 18px 20px; gap: 16px; }
+    .card .id, .offer-card .id { grid-column: 1; }
+    .ring { grid-column: 2; grid-row: 1; width: 70px; height: 70px; }
+    .ring span { width: 58px; height: 58px; font-size: 1.35rem; }
+    .body, .act, .offer-card .cta { grid-column: 1 / -1; }
+    .lower { grid-template-columns: 1fr; }
+    .side { position: static; }
+  }
+  @media (max-width: 720px) {
+    .hero { height: 330px; }
+    .hero-img { object-position: 82% 15%; }
+    .hero::after { background: linear-gradient(90deg, rgb(150 20 45 / 0.9) 0%, rgb(150 20 45 / 0.6) 55%, rgb(150 20 45 / 0.1) 100%); }
+    .hero-copy { padding-top: 40px; }
+    .top3 { margin-top: -90px; padding: 18px 14px 18px; }
+    .top3-row { grid-template-columns: 1fr; gap: 18px; }
+    .mini { grid-template-columns: 1fr auto auto; padding: 14px 12px; }
+    .mini-go { grid-column: auto; padding: 8px 12px; }
+    .mini-score .stars { display: none; }
+    .mark { width: 50px; height: 50px; }
+    .mark.mono { font-size: 1.5rem; }
+    .id h3 { font-size: 1.3rem; }
+    .offer { padding: 28px 14px 18px; margin-left: -16px; margin-right: -16px; }
+    .offer > h2 { font-size: 1.6rem; }
   }
 </style>

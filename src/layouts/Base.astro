@@ -25,6 +25,13 @@ const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- Google tag (Google Ads account 128-184-7896). The outbound-click conversion is sent from Tracking.astro. -->
+    <script is:inline async src="https://www.googletagmanager.com/gtm.js?id=GTM-52S39FCT"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />

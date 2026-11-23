@@ -6,12 +6,11 @@
  *    The ad click ID (gclid, gbraid, wbraid or msclkid) is kept for 30 days and added to /go/ links as cid=,
  *    so /go/ can pass it to the affiliate network (sub4) for offline conversion import later.
  *    A split-test variant (bab_split, set by landing pages) is added as split= and sent as sub5.
- * 2) Optional Google Ads conversion: set PUBLIC_GOOGLE_ADS_ID (AW-XXXXXXXXX) and
- *    PUBLIC_GOOGLE_ADS_CLICK_LABEL at build time to load the Google tag and record each
- *    affiliate click (/go/ link) as a conversion.
+ * 2) Google Ads conversion: each affiliate click (/go/ link) is sent as the "Outbound click" conversion
+ *    of Google Ads account 128-184-7896. PUBLIC_GOOGLE_ADS_ID / PUBLIC_GOOGLE_ADS_CLICK_LABEL override these.
  */
-const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID as string | undefined;
-const clickLabel = import.meta.env.PUBLIC_GOOGLE_ADS_CLICK_LABEL as string | undefined;
+const adsId = (import.meta.env.PUBLIC_GOOGLE_ADS_ID as string | undefined) || 'AW-18592250797';
+const clickLabel = (import.meta.env.PUBLIC_GOOGLE_ADS_CLICK_LABEL as string | undefined) || 'RcSzCJ_4lL4dEK33vKFF';
 ---
 
 {
